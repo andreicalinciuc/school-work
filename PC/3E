@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+long long n, s, cp, ld, i;
+
+int main()
+{
+    cin >> n;
+    s=5;
+    cp=2;
+    ld=2;
+    for (i=3; i<=n; i++)
+    {
+        if (((cp+1)*ld)>(cp*(ld+1))) cp++;
+        else ld++;
+        s+=cp*ld;
+    }
+    if (n==0) cout << "0.000";
+    else if (n==1) cout << "1.000";
+    else cout << s << ".000";
+}
