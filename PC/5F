@@ -1,0 +1,46 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+queue <int> Q;
+int n, p, a[101][101], frfr, m, sol[101], k, viz[101], t, d[1001], xc;
+
+void BFS (int t)
+{
+    Q.push (t); d[t]=0;
+    while (!Q.empty())
+    {
+        xc=Q.front(); Q.pop();
+        for (int i=1; i<=n; i++)
+        {
+            if (a[i][xc]==1&&d[i]>d[xc]+1)
+            {
+                d[i]=d[xc]+1;
+                Q.push(i);
+            }
+        }
+    }
+}
+
+int main()
+{
+    cin >> n >> t;
+    for (int i=1; i<=n; i++)
+    {
+        cin >> m;
+        for (int j=1; j<=m; j++)
+        {
+            cin >> p;
+            a[i][p]=a[p][i]=1;
+        }
+    }
+    for (int i=1; i<=n; i++) d[i]=0x3f3f3f3f;
+    BFS(t);
+    for (int i=1; i<=n; i++)
+    {
+        if (d[i]==2) sol[++k]=i;
+    }
+    cout << k << "\n";
+    for (int i=1; i<=k; i++) cout << sol[i] << " ";
+}
