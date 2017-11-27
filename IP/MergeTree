@@ -3,7 +3,6 @@
 using namespace std;
 
 ifstream fin ("date.in");
-ofstream fout ("date.out");
 
 struct TreeNode
 {
@@ -25,6 +24,25 @@ TreeNode *Citire()
         return p;
     }
     else return NULL;
+}
+
+TreeNode *CitireBFS (int n)
+{
+    int k=0;
+    TreeNode *p, *q;
+    queue <TreeNode*> Q;
+    p = new TreeNode(0);
+    Q.push (p);
+    while (k++<n)
+    {
+        q=Q.front(); Q.pop();
+        fin >> q->val;
+        q->left = new TreeNode(0);
+        q->right = new TreeNode(0);
+        Q.push (q->left);
+        Q.push (q->right);
+    }
+    return p;
 }
 
 TreeNode *Merge (TreeNode *p, TreeNode *q)
@@ -64,23 +82,28 @@ void Afisare (TreeNode *p)
 void AfisareBFS (TreeNode *p)
 {
     TreeNode *q = new TreeNode(0);
-    queue <TreeNode> Q;
-    Q.push (*p);
+    queue <TreeNode*> Q;
+    Q.push (p);
     while (!Q.empty())
     {
-        *q=Q.front(); Q.pop();
-        fout << q->val << " ";
-        if (q->left) Q.push (*(q->left));
-        if (q->right) Q.push (*(q->right));
+        q=Q.front(); Q.pop();
+        if (!(!q->val&&!q->left&&!q->right))
+        {
+            if (q->val) cout << q->val << " ";
+            else cout << "# ";
+        }
+        if (q->left) Q.push (q->left);
+        if (q->right) Q.push (q->right);
     }
 }
 
 int main()
 {
-    TreeNode *arb1 = Citire();
-    TreeNode *arb2 = Citire();
+    int n1, n2;
+    fin >> n1;
+    TreeNode *arb1=CitireBFS(n1);
+    fin >> n2;
+    TreeNode *arb2=CitireBFS(n2);
     TreeNode *arbFinal = Merge (arb1, arb2);
-    Afisare (arbFinal);
-    fout << "\n";
     AfisareBFS (arbFinal);
 }
