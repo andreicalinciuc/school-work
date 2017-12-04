@@ -26,9 +26,9 @@ players player[max_number_of_players], table;
 
 void GenerateDeck() {
     unsigned short int i, j;
-    for (i=0; i<13; i++)
+    for (i=0; i<13; ++i)
     {
-        for (j=0; j<4; j++)
+        for (j=0; j<4; ++j)
         {
             card[4*i+j].number = numbers[i];
             card[4*i+j].symbol = symbols[j];
@@ -39,7 +39,7 @@ void GenerateDeck() {
 void PrintDeck() {
     printf ("The deck is:\n");
     unsigned short int i;
-    for (i=0; i<max_number_of_cards; i++) printf ("{%c,%c}\t", card[i].number, card[i].symbol);
+    for (i=0; i<max_number_of_cards; ++i) printf ("{%c,%c}\t", card[i].number, card[i].symbol);
     printf ("\n\n");
 }
 
@@ -96,7 +96,7 @@ void Dump (players &x, players &y) {
 
 unsigned short int SignToNumber(play_card x) {
     unsigned short int i;
-    for (i=0; i<13; i++) {
+    for (i=0; i<13; ++i) {
         if (x.number==numbers[i]) return i+2;
     }
 }
@@ -108,7 +108,7 @@ char NumberToSign (short int x)
 
 void PrintWinner() {
     unsigned short int i;
-    for (i=0; i<n && !winner; i++){
+    for (i=0; i<n && !winner; ++i){
         if (player[i].cards==number_of_cards) winner = i+1;
     }
     if (winner) printf ("Player %d wins the game!\n\n", winner);
@@ -158,7 +158,7 @@ void EstablishHandWinner() {
                 hand_winner = i;
                 hand_winners = 1;
             }
-            else if (max_value == val[i]) hand_winners++;
+            else if (max_value == val[i]) ++hand_winners;
         }
     }
     if (hand_winners==1) {
