@@ -7,7 +7,7 @@ using namespace std;
 const unsigned short int max_number_of_cards = 52, max_number_of_players = 52;
 const char *numbers="23456789ZJQKA";
 const char *symbols="TRCP";
-unsigned short int number_of_cards = 52, winner, val[max_number_of_players], draw, n;
+unsigned short int val[max_number_of_players], number_of_cards = 52, winner, draw, n;
 unsigned int moves;
 bool participant[max_number_of_players];
 
