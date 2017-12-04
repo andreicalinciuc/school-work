@@ -7,7 +7,7 @@ using namespace std;
 const unsigned short int max_number_of_cards = 52, max_number_of_players = 52;
 const char *numbers="23456789ZJQKA";
 const char *symbols="TRCP";
-unsigned short int number_of_cards = 52, winner, val[max_number_of_players], draw = 0, n;
+unsigned short int number_of_cards = 52, winner, val[max_number_of_players], draw, n;
 unsigned int moves;
 bool participant[max_number_of_players];
 
@@ -62,7 +62,7 @@ void ShuffleDeck() {
 void DistributeDeck() {
     unsigned short int i, j;
     number_of_cards = (max_number_of_cards/n) * n;
-    moves = 0; draw = 0; table.cards = 0; table.current_card = 0; table.last_card = -1;
+    moves = 0; draw = 0; winner = 0; table.cards = 0; table.current_card = 0; table.last_card = -1;
     for (i=0; i<n; ++i){
         player[i].cards = number_of_cards/n;
         player[i].current_card = 0;
