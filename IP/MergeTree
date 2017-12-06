@@ -74,7 +74,7 @@ TreeNode *Merge (TreeNode *p, TreeNode *q)
 
 void Afisare (TreeNode *p)
 {
-    fout << p->val << " ";
+    cout << p->val << " ";
     if (p->left) Afisare (p->left);
     if (p->right) Afisare (p->right);
 }
