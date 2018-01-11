@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+bool Lexicografice (LLin L1, LLin L2)
+{
+    nod *p = L1.prim;
+    nod *q = L2.prim;
+    while (p!=NULL && q!=NULL) //cat timp putem compara elemente din ambele liste
+    {
+        //daca un element din L1 este strict mai mic sau strict mai mare fata de un element din L2, putem sa dam deja raspunsul
+        if (p->info < q->info) return 1;
+        if (p->info > q->info) return 0;
+    }
+    if (p!=NULL) return 0; //daca inca nu avem un raspuns returnat si L1 nu s-a terminat, L1 este lexicografic mai mare, deci returnam 0
+    else return 1; //daca inca nu avem un raspuns returnat iar listele sunt egale ca lungime sau L2 este mai mare, L1 <= L2 lexicografic, deci returnam 1
+}
+
+bool ok = 1;
+int n = 0;
+int contor = 0;
+
+void DeterminareNrNoduri (nod *p)
+{
+    if (p == NULL) return;
+    DeterminareNrNoduri (p->stg);
+    ++n;
+    DeterminareNrNoduri (p->drp);
+}
+
+void PrimulSiUltimulInordine (nod *p)
+{
+    if (p == NULL) return;
+    if (ok==1)
+    {
+        DeterminareNrNoduri (p); //algoritmul intra in if doar daca este la primul nod in parcurgere, deci este garantat ca p este radacina arborelui
+        ok = 0;
+    }
+    PrimulSiUltimulInordine (p->stg);
+    ++contor;
+    if (contor == 1) || (contor == n) cout << p->info << " ";
+    PrimulSiUltimulInordine (p->drp);
+}
+
+int main()
+{
+
+}
