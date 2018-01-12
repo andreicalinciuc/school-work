@@ -15,7 +15,7 @@ int f (int, int)
 
 int main()
 {
-    int i, j;
+    int i=0, j=0;
     //int m[L][C];
     int **m;
     m = (int**)malloc(L*4);
