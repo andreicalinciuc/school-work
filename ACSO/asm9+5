@@ -24,4 +24,3 @@ int main()
     structura.s = 10;
     cout << get_s(&structura);
 }
-//NU MERGE
