@@ -3,7 +3,7 @@
 
 using namespace std;
 
-unsigned radical(unsigned n)
+unsigned radical (unsigned n)
 {
 	_asm
 	{
