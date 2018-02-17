@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <stack>
+#include <algorithm>
+
+using namespace std;
+
+string s;
+stack <int> S;
+
+void operatie()
+{
+    int dr = S.top();
+    S.pop();
+    int st = S.top();
+    S.pop();
+    if (s=="+") S.push (st+dr);
+    else if (s=="-") S.push (st-dr);
+    else if (s=="*") S.push (st*dr);
+    else if (s=="/") S.push (st/dr);
+}
+
+int main()
+{
+    while (cin >> s)
+    {
+        if (s[0]>='0'&&s[0]<='9') S.push(atoi(s.c_str()));
+        else operatie();
+    }
+    cout << S.top() << "\n";
+}

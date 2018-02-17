@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+unsigned long long n, m, a[301][301], i, j, k, mod;
+
+int main()
+{
+    cin >> n; m=n*(n-1); m/=2;
+    for (i=1; i<=n; i++)
+    {
+        for (j=1; j<=n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+    for (i=1; i<=n; i++)
+    {
+        for (j=i+1; j<=n; j++)
+        {
+            for (k=1; k<=n; k++)
+            {
+                if (a[i][j]&&a[i][k]&&a[k][j]&&k!=i&&k!=j) if (a[i][j]==a[i][k]+a[k][j]) {m--; break;}//cout << i << k << j;}
+            }
+        }
+    }
+    cout << m;
+}

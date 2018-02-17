@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int i, n, L[1000005], a[1000005], j, sol, alive, k, len;
+char s[20000005];
+
+int main()
+{
+    cin >> n; cin.get();
+    cin.getline (s, 20000005);
+    i=0;
+    len=strlen(s);
+    while (i<len)
+    {
+        if (s[i]>='0'&&s[i]<='9')
+        {
+            ++k;
+            while (s[i]>='0'&&s[i]<='9')
+            {
+                L[k]=L[k]*10+s[i]-'0';
+                i++;
+            }
+            i--;
+        }
+        i++;
+    }
+    for (i=n; i>=1; i--)
+    {
+        a[max(1, i-L[i])]-=1; a[i]+=1;
+        sol+=a[i];
+        if (sol==0) alive++;
+    }
+    cout << alive;
+}
