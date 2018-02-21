@@ -17,7 +17,7 @@ int main()
 		v[++n] = atoi(s);
 	}
 	sort (v+1, v+n+1);
-	for (int i=1; i<=n; i++)
+	for (int i=1; i<=n; ++i)
 	{
 		printf ("%d ", v[i]);
 	}
