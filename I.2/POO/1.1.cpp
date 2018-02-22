@@ -1,10 +1,7 @@
 #include <cstdio>
-#include <cstdlib>
 #include <algorithm>
 
 using namespace std;
-
-FILE *fisier = fopen ("data.in", "r");
 
 int n, v[100];
 
@@ -12,6 +9,7 @@ char s[100];
 
 int main()
 {
+	FILE *fisier = fopen ("data.in", "r");
 	while (fgets (s, 100, fisier) != NULL)
 	{
 		v[++n] = atoi(s);
@@ -21,4 +19,5 @@ int main()
 	{
 		printf ("%d ", v[i]);
 	}
+	fclose (fisier);
 }
