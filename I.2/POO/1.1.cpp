@@ -5,7 +5,7 @@ using namespace std;
 
 int n, v[100];
 
-char s[100];
+char s[101];
 
 int main()
 {
