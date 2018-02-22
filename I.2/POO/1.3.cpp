@@ -1,11 +1,9 @@
 #include <iostream>
 #include <cstring>
 
-#define RESULT_MAX_SIZE 12
+#define RESULT_MAX_SIZE 10
 
 using namespace std;
-
-char s[RESULT_MAX_SIZE];
 
 char* strrevLINUX (char* s)
 {
@@ -19,6 +17,7 @@ char* strrevLINUX (char* s)
 
 bool Convert (unsigned int number, unsigned int toBase, char* result, unsigned int resultMaxSize)
 {
+	char s[RESULT_MAX_SIZE];
 	if (toBase<2 || toBase>16) return 0;
 	int k = -1;
 	while (number)
@@ -30,13 +29,16 @@ bool Convert (unsigned int number, unsigned int toBase, char* result, unsigned i
 		if (s[k]>9) s[k] = s[k]-10+'A';
 		else s[k] = s[k]+'0';
 	}
+	s[k+1]=0;
 	if (strlen(s) == 0) return 0;
 	strrevLINUX(s);
+	strcpy(result, s);
 	return 1;
 }
 
 int main ()
 {
-	cout << Convert (255, 16, s, RESULT_MAX_SIZE);
-	cout << "\n" << s;
+	char rez[RESULT_MAX_SIZE];
+	cout << Convert (255, 16, rez, RESULT_MAX_SIZE);
+	cout << "\n" << rez;
 }
