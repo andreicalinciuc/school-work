@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 
-#define RESULT_MAX_SIZE 10
+#define RESULT_MAX_SIZE 12
 
 using namespace std;
 
