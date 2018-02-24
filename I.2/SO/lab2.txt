@@ -1,0 +1,5 @@
+1) a) find . -exec stat -c %n:%a {} \;
+1) b) ls . -lR
+2) find . -name "a*" -or -name "*a"
+3) sort /etc/passwd -r -o file.txt
+4) sort /etc/passwd -n -k 3 -t ':'
