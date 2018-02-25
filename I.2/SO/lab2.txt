@@ -1,5 +1,17 @@
 1) a) find . -exec stat -c %n:%a {} \;
 1) b) ls . -lR
-2) find . -name "a*" -or -name "*a"
+2) find . -name "a*" -exec stat -c %n:%y:%s {} \; -or -name "*a" -exec stat -c %n:%y:%s {} \;
 3) sort /etc/passwd -r -o file.txt
 4) sort /etc/passwd -n -k 3 -t ':'
+
+5) find . -perm -500 -exec stat -c %n:%a {} \;
+6) find . -type f -mtime -7 -exec stat -c %n:%a:%y {} \;
+7) find . -type f -perm -100 -exec stat -c %n:%z:%s {} \;
+8) find . -type f -name "*.c" -exec stat -c %n:%s:%y {} \; -or -name "*.cpp" -exec stat -c %n:%s:%y {} \; -or -name "*.h" -exec stat -c %n:%s:%y {} \;
+9) find . -type f -name "*.cpp" -exec g++ 2> errors.txt {} \;
+10) find . -type f -name "*.htm" -exec stat -c %n:%s:%y {} \; -or -name "*.html" -exec stat -c %n:%s:%y {} \; -or -name "*.php" -exec stat -c %n:%s:%y {} \; -or -name "*.css" -exec stat -c %n:%s:%y {} \;
+11) find -type f -name "*.bak" -exec rm {} \; -or -name "*~" -exec rm {} \;
+
+INTERCHANGEABLE:
+-exec stat -c %n:%y:%s {} \;
+-exec ls -l --block-size=KB {} \;
