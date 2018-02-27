@@ -1,5 +1,5 @@
 1) a) find . -exec stat -c %n:%a {} \;
-1) b) ls . -lR
+1) b) find . -printf "%p:%m\n"
 2) find . -name "a*" -exec stat -c %n:%y:%s {} \; -or -name "*a" -exec stat -c %n:%y:%s {} \;
 3) sort /etc/passwd -r -o file.txt
 4) sort /etc/passwd -n -k 3 -t ':'
