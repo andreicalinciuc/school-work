@@ -1,12 +1,45 @@
 #include "MyString.h"
-#include <cstring>
-#include <cmath>
-#include <algorithm>
+
+unsigned int MyString::strlen (const char *text)
+{
+    unsigned int i = 0;
+    while (text[i] != 0) i++;
+    return i;
+}
+
+void MyString::strcpy (char *dest, const char *src)
+{
+    unsigned int length = strlen (src);
+    char *aux = new char[length+1];
+    for (unsigned int i = 0; i < length; ++i) aux[i] = src[i];
+    for (unsigned int i = 0; i < length; ++i) dest[i] = aux[i];
+    dest[length] = 0;
+    //delete[] aux;
+}
+
+void MyString::strncpy (char *dest, const char *src, unsigned int length)
+{ 
+    if (length > strlen (src)) return;
+    char *aux = new char[length+1];
+    for (unsigned int i = 0; i < length; ++i) aux[i] = src[i];
+    for (unsigned int i = 0; i < length; ++i) dest[i] = aux[i];
+    delete[] aux;
+}
+
+void MyString::strcat (char *dest, const char *src)
+{
+    strcpy (dest + strlen (dest), src);
+}
+
+bool MyString::min (unsigned int a, unsigned int b)
+{
+    return (a<b)?a:b;
+}
 
 MyString::MyString()
 {
-    sir = new char[128];
-    AllocatedSize = 128;
+    sir = new char[16];
+    AllocatedSize = 16;
     Size = 0;
 }
 
@@ -44,7 +77,7 @@ void MyString::Set (const char *text)
 
 void MyString::Set (MyString &m)
 {
-    if (m.Size > AllocatedSize)
+    if (m.Size+1 > AllocatedSize)
     {
         this->~MyString();
         sir = new char [m.Size+1];
@@ -94,7 +127,7 @@ const char* MyString::GetText()
 
 MyString* MyString::SubString (unsigned int start, unsigned int size)
 {
-    if (start+size > Size+1 || start < 1 || size < 1) return NULL;
+    if (start+size > Size+1 || start < 1 || size < 1) return 0;
     char *aux = new char [size+1];
     strncpy (aux, sir+start-1, size); aux[size]=0;
     MyString *obj = new MyString (aux);
@@ -112,7 +145,7 @@ bool MyString::Delete (unsigned int start, unsigned int size)
 int MyString::Compare (const char *text)
 {
     unsigned int Len = strlen (text);
-    unsigned int End = std::min (Size, Len);
+    unsigned int End = min (Size, Len);
     for (unsigned int i=0; i<End; ++i)
     {
         if (sir[i] < text[i]) return -1;
@@ -125,7 +158,7 @@ int MyString::Compare (const char *text)
 
 int MyString::Compare (MyString &m)
 {
-    unsigned int End = std::min (Size, m.Size);
+    unsigned int End = min (Size, m.Size);
     for (unsigned int i=0; i<End; ++i)
     {
         if (sir[i] < m.sir[i]) return -1;
@@ -149,7 +182,7 @@ bool MyString::Insert (unsigned int index, const char *text)
     if (Size+Len+1 > AllocatedSize)
     {
         char *aux = new char [Size];
-        strcpy(aux, sir);
+        strcpy (aux, sir);
         this->~MyString();
         sir = new char [Size+Len+1];
         AllocatedSize = Size+Len+1;
@@ -167,7 +200,7 @@ bool MyString::Insert (unsigned int index, MyString &m)
     if (Size+m.Size+1 > AllocatedSize)
     {
         char *aux = new char [Size];
-        strcpy(aux, sir);
+        strcpy (aux, sir);
         this->~MyString();
         sir = new char [Size+m.Size+1];
         strcpy (sir, aux);
