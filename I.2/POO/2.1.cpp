@@ -181,7 +181,7 @@ bool MyString::Insert (unsigned int index, const char *text)
     unsigned int Len = strlen (text);
     if (Size+Len+1 > AllocatedSize)
     {
-        char *aux = new char [Size];
+        char *aux = new char [Size+1];
         strcpy (aux, sir);
         this->~MyString();
         sir = new char [Size+Len+1];
@@ -199,7 +199,7 @@ bool MyString::Insert (unsigned int index, MyString &m)
     if (index < 1 || index > Size+1) return 0;
     if (Size+m.Size+1 > AllocatedSize)
     {
-        char *aux = new char [Size];
+        char *aux = new char [Size+1];
         strcpy (aux, sir);
         this->~MyString();
         sir = new char [Size+m.Size+1];
