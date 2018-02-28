@@ -227,7 +227,7 @@ int MyString::Find (const char *text)
     return -1;
 }
 
-int MyString::FindLast (const char * text)
+int MyString::FindLast (const char *text)
 {
     int LastPos = -1;
     unsigned int Len = strlen (text);
