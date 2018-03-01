@@ -1,7 +1,7 @@
 class MyString
 {
   private:
-    char * sir; 
+    char *sir; 
     unsigned int AllocatedSize;
     unsigned int Size;
     unsigned int strlen (const char *text);
