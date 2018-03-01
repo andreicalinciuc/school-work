@@ -1,0 +1,31 @@
+swap (out a, i, j)
+{
+    temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+}
+
+bubblesort (out a, n)
+{
+    gata = 0;
+    while (gata == 0)
+    {
+        gata = 1;
+        for (i=1; i<=n-1; ++i)
+        {
+            if (a[i-1] > a[i])
+            {
+                swap (a, i-1, i);
+                gata = 0;
+            }
+        }
+        --n;
+    }
+}
+
+bubblesort(a, n);
+
+
+/*
+alki bubblesort.alk --init="n |-> 10 a |-> [5,7,1,6,9,3,2,10,4,8]"
+*/
