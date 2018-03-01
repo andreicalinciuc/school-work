@@ -14,7 +14,7 @@ void MyString::strcpy (char *dest, const char *src)
     for (unsigned int i = 0; i < length; ++i) aux[i] = src[i];
     for (unsigned int i = 0; i < length; ++i) dest[i] = aux[i];
     dest[length] = 0;
-    //delete[] aux;
+    delete[] aux;
 }
 
 void MyString::strncpy (char *dest, const char *src, unsigned int length)
@@ -139,6 +139,7 @@ bool MyString::Delete (unsigned int start, unsigned int size)
 {
     if (start+size > Size+1 || start < 1 || size < 1) return 0;
     strcpy (sir+start-1, sir+start+size-1);
+    Size -= size;
     return 1;
 }
 
@@ -191,6 +192,7 @@ bool MyString::Insert (unsigned int index, const char *text)
     }
     strcpy (sir+index-1+Len, sir+index-1);
     strncpy (sir+index-1, text, Len);
+    Size += Len;
     return 1;
 }
 
@@ -208,6 +210,7 @@ bool MyString::Insert (unsigned int index, MyString &m)
     }
     strcpy (sir+index-1+m.Size, sir+index-1);
     strncpy (sir+index-1, m.sir, m.Size);
+    Size += m.Size;
     return 1;
 
 }
