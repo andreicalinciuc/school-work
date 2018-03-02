@@ -23,8 +23,7 @@ bubblesort (out a, n)
     }
 }
 
-bubblesort(a, n);
-
+bubblesort (a, n);
 
 /*
 alki bubblesort.alk --init="n |-> 10 a |-> [5,7,1,6,9,3,2,10,4,8]"
