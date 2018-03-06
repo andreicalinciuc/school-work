@@ -5,7 +5,7 @@
    c) users | tr -s ' ' '\n' | sort -u > utilizatori-logati.txt
 4) cat /etc/passwd | cut -f 7 -d ':' | sort -u
 5) cat /etc/passwd | grep ana | grep -v diana | wc -l
-6) ps -A -U vlad.bujoreanu | wc -l
+6) ps -U vlad.bujoreanu | tail -n +2 | wc -l
 
 7) sort /etc/passwd -n -k 3 -t ':' | cut -f 1,3,4 -d ':' --output-delimiter=" -> " | cut -s -f 1,2 -d '.' | tr -s '.' ' ' | tr -s ':' ' ' | tr -s [:lower:] [:upper:]
 8) who -s | tr -s '  ' ' ' | cut -f 1,3,4,5 -d ' '
