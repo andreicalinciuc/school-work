@@ -1,7 +1,8 @@
 1) cat /etc/passwd | grep /bin/bash | wc -l
 2) cat /etc/passwd | grep studs | wc -l
-3) a) who | cut -f 1 -d ' ' | sort > utilizatori-logati.txt
-3) b) users | tr -s ' ' '\n' | sort > utilizatori-logati.txt
+3) a) who | cut -f 1 -d ' ' | sort -u > utilizatori-logati.txt
+   b) finger | tail -n +2 | cut -f 1 -d ' ' | sort -u > utilizatori-logati.txt
+   c) users | tr -s ' ' '\n' | sort -u > utilizatori-logati.txt
 4) cat /etc/passwd | cut -f 7 -d ':' | sort -u
 5) cat /etc/passwd | grep ana | grep -v diana | wc -l
 6) ps -A -U vlad.bujoreanu | wc -l
