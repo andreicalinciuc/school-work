@@ -8,8 +8,8 @@
 6) ps -U vlad.bujoreanu | tail -n +2 | wc -l
 
 7) sort /etc/passwd -n -k 3 -t ':' | cut -f 1,3,4 -d ':' --output-delimiter=" -> " | cut -s -f 1,2 -d '.' | tr -s '.' ' ' | tr -s ':' ' ' | tr -s [:lower:] [:upper:]
-8) who -s | tr -s '  ' ' ' | cut -f 1,3,4,5 -d ' '
-9) who -s | tr -s '  ' ' ' | cut -f 1,3,4,5 -d ' ' | sort -k 3 -t ' '
+8) who | grep vlad.bujoreanu | tr -s '  ' ' ' | cut -f 3,4,5 -d ' '
+9) who | tr -s '  ' ' ' | cut -f 1,3,4,5 -d ' ' | sort -k 3 -t ' ' | tail -n 15
 10) w | grep -vi user | tr -s '  ' ' ' | cut -f 1,3,8 -d ' '
 11) who | cut -f 1 -d ' ' | cut -f 1 -d '.' -s | grep 'a$'
 12) who | cut -f 1 -d ' ' | cut -f 1 -d '.' -s | grep '^a' > a.txt
