@@ -1,9 +1,8 @@
 class BigNumber {
-  //private:
-  public:
+  private:
     char Number[256];
     unsigned int CharactersCount;
-  //public:
+  public:
     BigNumber(); //constructor implicit (creaza numarul 0 [field-ul Number contine "0", field-ul CharactersCount contine valoarea 1 - un caracter]
     BigNumber (int value); 
     BigNumber (const char *number); 
@@ -11,9 +10,9 @@ class BigNumber {
     bool Set (int value);
     bool Set (const char *number);
     BigNumber operator + (const BigNumber &number);
-    BigNumber operator * (const BigNumber &number);
+    BigNumber operator * (const BigNumber &number); //fix this
     BigNumber operator - (const BigNumber &number);
-    BigNumber operator / (const BigNumber &number);
+    BigNumber operator / (const BigNumber &number); //fix this
     friend bool operator == (const BigNumber &n1, const BigNumber &n2);
     friend bool operator != (const BigNumber &n1, const BigNumber &n2);
     friend bool operator <  (const BigNumber &n1, const BigNumber &n2);
