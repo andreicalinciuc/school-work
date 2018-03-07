@@ -29,7 +29,7 @@ BigNumber::BigNumber (int value)
 
 BigNumber::BigNumber (const char *number)
 {
-    memset (Number, 0, sizeof (Number));
+    memset (Number, 0, sizeof(Number));
     CharactersCount = strlen(number);
     for (unsigned int i = 0; i < CharactersCount; ++i)
     {
@@ -248,7 +248,7 @@ BigNumber BigNumber::operator () (unsigned int start, unsigned int end)
     if (start < 1 || start > CharactersCount || end < 1 || end > CharactersCount || start > end) return 0;
     BigNumber result;
     result.CharactersCount = end-start+1;
-    for (unsigned int i=start, k=1; i<=end; ++i, ++k)
+    for (unsigned int i = start, k = 1; i <= end; ++i, ++k)
     {
         result.Number[end-start+1-k+1] = Number[CharactersCount-i+1];
     }
