@@ -94,7 +94,7 @@ BigNumber BigNumber::operator + (const BigNumber &number)
     return A;
 }
 
-BigNumber BigNumber::operator * (const BigNumber &number)
+BigNumber BigNumber::operator * (const BigNumber &number) //fix this
 {
     BigNumber A (*this);
     BigNumber B (number);
@@ -133,7 +133,7 @@ BigNumber BigNumber::operator - (const BigNumber &number)
     return A;
 }
 
-BigNumber BigNumber::operator / (const BigNumber &number)
+BigNumber BigNumber::operator / (const BigNumber &number) //fix this
 {
     BigNumber A (*this);
     BigNumber B (number);
