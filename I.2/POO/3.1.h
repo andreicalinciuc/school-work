@@ -10,7 +10,7 @@ class BigNumber {
     bool Set (int value);
     bool Set (const char *number);
     BigNumber operator + (const BigNumber &number);
-    BigNumber operator * (const BigNumber &number); //fix this
+    BigNumber operator * (const BigNumber &number);
     BigNumber operator - (const BigNumber &number);
     BigNumber operator / (const BigNumber &number); //fix this
     friend bool operator == (const BigNumber &n1, const BigNumber &n2);
