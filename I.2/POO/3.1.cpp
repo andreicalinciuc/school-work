@@ -99,6 +99,12 @@ BigNumber BigNumber::operator * (const BigNumber &number)
     BigNumber A (*this);
     BigNumber B (number);
     BigNumber C;
+    if ((A.CharactersCount == 1 && A.Number[1] == 0) || (B.CharactersCount == 1 && B.Number[1] == 0))
+    {
+        C.CharactersCount = 1;
+        C.Number[1] = 0;
+        return C;
+    }
     C.CharactersCount = A.CharactersCount + B.CharactersCount;
     unsigned int it_A = 0, it_B, sum, carry;
     for (unsigned int i = 1; i <= A.CharactersCount; ++i)
@@ -113,13 +119,13 @@ BigNumber BigNumber::operator * (const BigNumber &number)
             ++it_B;
         }
         if (carry > 0)
-        {   
+        {
             C.Number[it_A + it_B] += carry;
         }
         ++it_A;
     }
     while (C.CharactersCount>=1 && C.Number[C.CharactersCount] == 0)
-    {   
+    {
         C.CharactersCount--;
     }
     return C;
