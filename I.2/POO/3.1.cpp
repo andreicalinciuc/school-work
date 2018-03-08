@@ -94,26 +94,34 @@ BigNumber BigNumber::operator + (const BigNumber &number)
     return A;
 }
 
-BigNumber BigNumber::operator * (const BigNumber &number) //fix this
+BigNumber BigNumber::operator * (const BigNumber &number)
 {
     BigNumber A (*this);
     BigNumber B (number);
     BigNumber C;
-    C.CharactersCount = A.CharactersCount + B.CharactersCount - 1;
-    unsigned int T = 0;
+    C.CharactersCount = A.CharactersCount + B.CharactersCount;
+    unsigned int it_A = 0, it_B, sum, carry;
     for (unsigned int i = 1; i <= A.CharactersCount; ++i)
     {
+        carry = 0;
+        it_B = 1;
         for (unsigned int j = 1; j <= B.CharactersCount; ++j)
         {
-            C.Number[i+j-1] += A.Number[i] * B.Number[j];
+            sum = A.Number[i]*B.Number[j] + C.Number[it_A + it_B] + carry;
+            carry = sum / 10;
+            C.Number[it_A + it_B] = sum % 10;
+            ++it_B;
         }
+        if (carry > 0)
+        {   
+            C.Number[it_A + it_B] += carry;
+        }
+        ++it_A;
     }
-    for (unsigned int i = 1; i <= C.CharactersCount; ++i)
-    {
-        T = (C.Number[i] += T) / 10;
-        C.Number[i] %= 10;
+    while (C.CharactersCount>=1 && C.Number[C.CharactersCount] == 0)
+    {   
+        C.CharactersCount--;
     }
-    if (T) C.Number[++C.CharactersCount] = T;
     return C;
 }
 
