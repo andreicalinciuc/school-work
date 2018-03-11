@@ -135,7 +135,7 @@ BigNumber BigNumber::operator - (const BigNumber &number)
 {
     BigNumber A (*this);
     BigNumber B (number);
-    if (A < B) return 0;
+    if (A <= B) return 0;
     unsigned int T = 0;
     for (unsigned int i = 1; i <= A.CharactersCount; ++i)
     {
