@@ -147,25 +147,29 @@ BigNumber BigNumber::operator - (const BigNumber &number)
     return A;
 }
 
-BigNumber BigNumber::operator / (const BigNumber &number) //fix this
+BigNumber BigNumber::operator / (const BigNumber &number)
 {
     BigNumber A (*this);
     BigNumber B (number);
     BigNumber C;
     BigNumber R;
-    R.CharactersCount = 0;
     C.CharactersCount = A.CharactersCount;
+    R.CharactersCount = 0;
     for (unsigned int i = A.CharactersCount; i>=1; --i)
     {
-        memmove(&R.Number[2], &R.Number[1], sizeof(int)*R.CharactersCount);
-        memset(&R.Number[1], 0, sizeof(int));
+        R = R * BigNumber(10);
         R.CharactersCount++;
         R.Number[1] = A.Number[i];
         C.Number[i] = 0;
-        while (B<=R)
+        while (R > B)
         {
             C.Number[i]++;
-            R=R-B;
+            R = R - B;
+        }
+        if (R == B)
+        {
+            C.Number[i]++;
+            R=0;
         }
     }
     while (C.Number[C.CharactersCount] == 0 && C.CharactersCount > 1) C.CharactersCount--;
