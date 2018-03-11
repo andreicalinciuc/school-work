@@ -12,7 +12,7 @@ class BigNumber {
     BigNumber operator + (const BigNumber &number);
     BigNumber operator * (const BigNumber &number);
     BigNumber operator - (const BigNumber &number);
-    BigNumber operator / (const BigNumber &number); //fix this
+    BigNumber operator / (const BigNumber &number);
     friend bool operator == (const BigNumber &n1, const BigNumber &n2);
     friend bool operator != (const BigNumber &n1, const BigNumber &n2);
     friend bool operator <  (const BigNumber &n1, const BigNumber &n2);
