@@ -1,0 +1,16 @@
+1) cat /etc/passwd | grep /bin/bash | wc -l
+2) cat /etc/passwd | grep studs | wc -l
+3) a) who | cut -f 1 -d ' ' | sort -u > utilizatori-logati.txt
+   b) finger | tail -n +2 | cut -f 1 -d ' ' | sort -u > utilizatori-logati.txt
+   c) users | tr -s ' ' '\n' | sort -u > utilizatori-logati.txt
+4) cat /etc/passwd | cut -f 7 -d ':' | sort -u
+5) cat /etc/passwd | grep ana | grep -v diana | wc -l
+6) ps -U vlad.bujoreanu | tail -n +2 | wc -l
+
+7) sort /etc/passwd -n -k 3 -t ':' | cut -f 1,3,4 -d ':' --output-delimiter=" -> " | cut -s -f 1,2 -d '.' | tr -s '.' ' ' | tr -s ':' ' ' | tr -s [:lower:] [:upper:]
+8) who | grep vlad.bujoreanu | tr -s '  ' ' ' | cut -f 3,4,5 -d ' '
+9) who | tr -s '  ' ' ' | cut -f 1,3,4,5 -d ' ' | sort -k 3 -t ' ' | tail -n 15
+10) w | grep -v -i user | tr -s '  ' ' ' | cut -f 1,3,8 -d ' ' | sort
+11) who | cut -f 1 -d ' ' | cut -f 1,2 -d '.' -s | grep -F 'a.' | tr -s '.' ' ' | tr -s [:lower:] [:upper:]
+12) who | cut -f 1 -d ' ' | cut -f 1,2 -d '.' -s | grep '^a' > a.txt
+13) cat /etc/passwd | cut -f 1,3 -d ':' | sort -k 2 -t ':' -n | grep -E [1-9][0-9][0-9][0-9][0-9]\|[5-9][0-9][0-9][0-9] | cut -f 1 -d ':'
