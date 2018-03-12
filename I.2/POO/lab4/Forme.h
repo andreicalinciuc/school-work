@@ -2,7 +2,7 @@ class Forma
 {
   public:
     virtual double ComputeArea() = 0;
-    virtual const char * GetName() = 0;
+    virtual const char* GetName() = 0;
 };
 
 class Dreptunghi: public Forma
