@@ -1,0 +1,76 @@
+RMQ[i][j] - min [i, i+2^j)
+RMQ[i][0] = a[i];
+RMQ[i][j] = min (RMQ[i][j-1], RMQ[i+2^(j-1)][j-1]);
+DPA[i][j] - al 2^j-lea stramos al lui i
+DPA[i][j] = DPA[DPA[i][j-1]][j-1]
+len=[log(R-L+1)]
+i=R-2^len+1
+
+while (x!=y)
+{
+    if (lvl[x] > lvl[y]) x = tata[x];
+    else y = tata[y];
+}
+
+--------------------------------------
+
+for (i=20; i>=0; --i)
+{
+    if (lvl[x]-2^i >= lvl[y])
+    {
+        x = DPA[x][i];
+    }
+}
+
+if (x==y) return y;
+--------------------------------------
+for (i=20; i>=0; --i)
+{
+    if (DPA[x][i] != DPA[y][i])
+    {
+        x = DPA[x][i];
+        y = DPA[y][i];
+    }
+}
+
+return DPA[x][0];
+
+---------------------------------------
+
+update (L, R, nod, x, y)
+{
+    if (L == R)
+    {
+        nod->val = y;
+        return;
+    }
+    mid = (L+R)/2;
+    if (x <= mid)
+    {
+        update (L, mid, nod->left, x, y);
+    }
+    else
+    {
+        update (mid+1, R, nod->right, x, y);
+    }
+    nod->val = combine (nod->left, nod->right);
+}
+
+query (L, R, nod, x, y)
+{
+    if (x<=L && R<=y)
+    {
+        return nod->val;
+    }
+    mid = (L+R)/2;
+    ans = 0;
+    if (x <= mid)
+    {
+        ans = combine (ans, query (L, mid, nod->left, x, y));
+    }
+    if (y > mid)
+    {
+        ans = combine (ans, query (mid+1, R, nod->right, x, y));
+    }
+    return ans;
+}
