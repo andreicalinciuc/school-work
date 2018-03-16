@@ -1,12 +1,9 @@
 #!/bin/bash
 
-parcurge()
-{
-    for f in *.sh
-    do
-      echo $f
-      echo $(cat $f | grep '#')
-    done
-}
+cd $1
 
-parcurge $1
+for f in *.sh
+do
+  echo $f
+  echo $(cat $f | grep '#')
+done
