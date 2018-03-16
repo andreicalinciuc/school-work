@@ -1,3 +1,5 @@
+#!/bin/bash
+
 directoare=0
 fisiere_ascunse=0
 symlinks=0
