@@ -1,3 +1,5 @@
+#!/bin/bash
+
 directoare=0
 fisiere_fifo=0
 
