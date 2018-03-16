@@ -1,3 +1,5 @@
+#!/bin/bash
+
 parcurge()
 {
     for f in `ls -A $1`
