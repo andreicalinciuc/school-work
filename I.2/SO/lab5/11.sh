@@ -24,3 +24,8 @@ do
   ln -s $f ~/html/muzica/$(basename $f)
   echo "<a href="muzica/$(basename $f)">$(basename $f .mp3)</a><br>" >> ~/html/muzica.html
 done
+
+chmod 775 ~
+chmod 775 ~/html
+chmod 775 ~/html/muzica
+chmod 774 ~/html/muzica.html
