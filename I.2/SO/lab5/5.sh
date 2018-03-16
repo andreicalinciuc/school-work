@@ -1,3 +1,5 @@
+#!/bin/bash
+
 lines=0
 characters=0
 
