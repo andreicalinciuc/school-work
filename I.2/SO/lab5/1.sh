@@ -17,7 +17,7 @@ parcurge()
       then
         let directoare++
         parcurge $1/$f
-      elif [[ -f $1/$f && $f == .* ]]
+      elif [[ -f $1/$f && $f = .* ]]
       then
         let fisiere_ascunse++
       elif [ -L $1/$f ]
