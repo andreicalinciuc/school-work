@@ -1,3 +1,4 @@
-[vladuz@VladuZ-LAPTOP so]$ scp -r vlad.bujoreanu@fenrir.info.uaic.ro:~/* .
-//prelucrare
-[vladuz@VladuZ-LAPTOP so]$ scp -r . vlad.bujoreanu@fenrir.info.uaic.ro:~/
+[vladuz@VladuZ-LAPTOP ~]$ mkdir so && cd so                                    // create working folder
+[vladuz@VladuZ-LAPTOP so]$ scp -r vlad.bujoreanu@fenrir.info.uaic.ro:~/* .     // remote -> local (pull)
+                                                                               // solve the test
+[vladuz@VladuZ-LAPTOP so]$ scp -r . vlad.bujoreanu@fenrir.info.uaic.ro:~/      // local -> remote (push)
