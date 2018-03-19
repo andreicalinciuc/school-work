@@ -1,4 +1,3 @@
-[vladuz@VladuZ-LAPTOP ~]$ scp -r vlad.bujoreanu@fenrir.info.uaic.ro:~ .
-[vladuz@VladuZ-LAPTOP ~]$ cd vlad.bujoreanu
+[vladuz@VladuZ-LAPTOP so]$ scp -r vlad.bujoreanu@fenrir.info.uaic.ro:~/* .
 //prelucrare
-[vladuz@VladuZ-LAPTOP vlad.bujoreanu]$ scp -r . vlad.bujoreanu@fenrir.info.uaic.ro:~
+[vladuz@VladuZ-LAPTOP so]$ scp -r . vlad.bujoreanu@fenrir.info.uaic.ro:~/
