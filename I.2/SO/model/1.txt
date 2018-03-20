@@ -1,0 +1,1 @@
+cat /etc/passwd | grep escu: | cut -f 1 -d ':' > useri-escu.txt
