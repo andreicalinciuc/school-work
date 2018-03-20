@@ -1,1 +1,0 @@
-shebang gresit: -bash: ./script.sh: /bin/noshell: bad interpreter: No such file or directory
