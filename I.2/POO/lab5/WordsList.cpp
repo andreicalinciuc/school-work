@@ -5,7 +5,7 @@ bool cmp (const char* a, const char* b)
     unsigned int sizeA = strlen (a);
     unsigned int sizeB = strlen (b);
     unsigned int n = std::min (sizeA, sizeB);
-    for (unsigned int i=0; i<n; ++i)
+    for (unsigned int i = 0; i < n; ++i)
     {
         char auxA = a[i]; if (auxA >= 'A' && auxA <= 'Z') auxA = auxA - 'A' + 'a';
         char auxB = b[i]; if (auxB >= 'A' && auxB <= 'Z') auxB = auxB - 'A' + 'a';
