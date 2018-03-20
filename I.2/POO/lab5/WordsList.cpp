@@ -16,17 +16,18 @@ bool cmp (const char* a, const char* b)
 }
 
 template <class T>
-WordsList<T>::WordsList() //fix this
+WordsList<T>::WordsList()
 {
     const unsigned int BufferSize = 100;
-    char s[BufferSize];
+    char *s = new char[BufferSize]; 
     FILE *file = fopen ("data.in", "r");
     while (fgets (s, BufferSize, file) != NULL)
     {
-        //not working
-        //v.push_back (s);
+        unsigned int n = strlen(s);
+        if (s[n-1] == '\n') s[n-1] = 0;
+        v.push_back (s);
+        s = new char[BufferSize];
     }
-    v.push_back ("varul"); v.push_back ("itt"); v.push_back ("este"); v.push_back ("paros"); //delete this
     fclose (file);
 }
 
