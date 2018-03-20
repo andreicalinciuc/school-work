@@ -19,10 +19,11 @@ fi
 
 echo > ~/html/muzica.html
 
-for f in `find $path -name "*.mp3" | grep -v ~/html/muzica`
+for f in `find $path -name "*.mp3" | grep -v ~/html/muzica | tr -s ' ' '#'`
 do
-  ln -s $f ~/html/muzica/$(basename $f)
-  echo "<a href="muzica/$(basename $f)">$(basename $f .mp3)</a><br>" >> ~/html/muzica.html
+  f=$(echo $f | tr -s '#' ' ')
+  ln -s "$f" ~/html/muzica/"$(basename "$f")"
+  echo "<a href=\"muzica/$(basename "$f")\">$(basename "$f" .mp3)</a><br>" >> ~/html/muzica.html
 done
 
 chmod 775 ~
