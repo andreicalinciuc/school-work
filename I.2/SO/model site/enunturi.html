@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+
+<title>SO - T1 1A-1</title>
+</head>
+
+<body>
+<h2>Sisteme de Operare - Test Practic 1</h2>
+
+<h3>Grupa 1A - Nr. 1</h3>
+
+
+<br>
+<br>
+1. Scrieti comanda bash ce scrie in fisierul useri-escu.txt numele de cont ale tuturor utilizatorilor
+umani din sistem al caror nume de cont se termina cu sufixul escu.
+
+<br>
+<br>
+2. Scrieti comanda bash ce arhiveaza toate fisierele cu extensia .c, .h sau .cpp, aflate in directorul dat ca argument in linia de comanda sau in subdirectoarele acestuia, in arhiva surse-progs.tar.
+
+<br>
+<br>
+3. Fie scriptul urmator, care se va apela cu o serie de parametri in linia de comanda:
+<pre>
+#!/bin/noshell
+A=1; #B=0;
+for a in $(ls /bin/*)
+do
+  [ -d $a ] && let B++
+done
+echo #B, $A
+</pre>
+Explicati ce se va afisa pe ecran in urma executiei scriptului.
+Corectati eventualele erori existente astfel incat in urma executiei scriptului corectat 
+sa apara afisate pe ecran numarul subdirectoarelor din directorul /bin si numarul parametrilor cu care a fost apelat.
+
+<br>
+<br>
+4. Sa se scrie un script bash care primeste o valoare n ca parametru si calculeaza <u>recursiv</u>
+termenul x<sub>n</sub> al sirului {x<sub>m</sub>}<sub>m&ge;0</sub>, definit prin:
+<br>
+x<sub>0</sub> = 0, x<sub>1</sub> = 1 si x<sub>m</sub> = 3 * x<sub>m-1</sub> - 2 * x<sub>m-2</sub>, pentru orice m&ge;2.
+<br>
+La final se va afisa valoarea termenului cerut, x<sub>n</sub>.
+
+
+</body>
+</html>
