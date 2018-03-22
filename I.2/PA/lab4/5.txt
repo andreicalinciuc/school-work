@@ -1,0 +1,16 @@
+random()
+{
+    b=floor(log2(n-1))+1;
+    result=0; aux=1;
+    for (i=1; i<=b; i++)
+    {
+        v[i]=rand2();
+    }
+    for (i=b; i>=1; i--)
+    {
+        result+=aux*v[i];
+        aux*=2;
+    }
+    if (result >= n) random();
+    return result;
+}
