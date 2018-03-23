@@ -1,4 +1,4 @@
-random()
+random(n)
 {
     b=floor(log2(n-1))+1;
     result=0; aux=1;
