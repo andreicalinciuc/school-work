@@ -11,6 +11,6 @@ random(n)
         result+=aux*v[i];
         aux*=2;
     }
-    if (result >= n) random();
+    if (result >= n) return random(n);
     return result;
 }
