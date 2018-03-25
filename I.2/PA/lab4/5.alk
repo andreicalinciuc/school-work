@@ -1,4 +1,4 @@
-random()
+random(n)
 {
     b=floor(log2(n-1))+1;
     result=0; aux=1;
@@ -11,6 +11,6 @@ random()
         result+=aux*v[i];
         aux*=2;
     }
-    if (result >= n) random();
+    if (result >= n) return random(n);
     return result;
 }
