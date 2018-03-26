@@ -8,5 +8,5 @@ who | cut -f 1 -d ' ' | grep -v so | sort | uniq | tr '.' ' ' | tr [:lower:] [:u
 
 s=$(cat logged.txt | wc -l)
 
-echo $s students are suffering right now:
+echo $((s-1)) students are suffering right now:
 cat logged.txt
