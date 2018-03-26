@@ -87,7 +87,9 @@ test (equivalent to [ ] ; equivalent to [[ ]] for extended syntax)
   -gt (greater than)
   -ge (greather than or equal)
 cp
+  -n (no overwrite)
 mv
+  -n (no overwrite)
 chmod
   -R (recursively)
 mkdir
