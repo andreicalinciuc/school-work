@@ -1,0 +1,102 @@
+echo
+  -n (do not print implicit newline character)
+cat
+  --output-delimiter '->'
+cut
+  -f 1,3 (fields)
+  -d ':' (delimiter)
+grep
+  -v (invert selection / without)
+  -i (ignore case)
+  -F (fixed string, not regular expression <=> pass special characters without having to escape them)
+  -E (extended syntax, for \| )
+find
+  -maxdepth 1 (don't go recursively)
+  -exec $command {} \;
+  -printf "%p:%m\n"
+    %p (filename)
+    %m (permissions in octal)
+    %t (last modification time)
+    %k (size in KB)
+    \n (newline)
+  -perm xyz (permission exactly xyz)
+  -perm -xyz (permission for owner at least x and for group at least y and for others at least z)
+  -perm /xyz (permission for owner at least x or for group at least y or for others at least z)
+  -type
+    f (regular file)
+    d (directory)
+  -mtime -7 (modified LESS THAN 7 days ago)
+  -mtime +7 (modified MORE THAN 7 days ago)
+stat
+  -c (format)
+    %n (filename)
+    %a (permissions in octal)
+    %s (size in bytes)
+    %y (last modification time)
+    %x (last access time)
+sort
+  -n (numeric)
+  -k 3 (field)
+  -t ':' (delimiter)
+  -o file.txt (output file)
+  -r (reverse)
+  -u (unique)
+rm
+g++
+  -o file (executable file)
+  2> output.txt (redirect stderr to file)
+  2>&1 (redirect stderr to stdout
+ls
+  -a (show everything)
+  -A (show almost everything, without . and .. )
+  -l (show permissions + sizes)
+  --block-size=KB (show sizes in KB instead of bytes)
+wc
+  -l (number of lines)
+  -m (number of characters)
+  -c (number of bytes / counts)
+  -w (number of words)
+  -L (maximum line length)
+w
+who
+finger
+users
+tr
+  -s (replace multiple characters in a row with only one)
+  [:lower:] [:upper:] (from lower to upper)
+tail
+  -n +2 (show from line 2 to bottom)
+  -n 2 (show last 2 lines)
+head
+  -n 2 (show first 2 lines)
+ps
+  -U vlad.bujoreanu (username)
+basename
+test (equivalent to [ ] ; equivalent to [[ ]] for extended syntax)
+  -r (readable)
+  -w (writable)
+  -x (executable)
+  -f (regular file)
+  -d (directory)
+  -L (symbolic link)
+  -p (pipe / fifo file)
+  -eq (equal)
+  -ne (not equal)
+  -lt (less than)
+  -le (less than or equal)
+  -gt (greater than)
+  -ge (greather than or equal)
+cp
+mv
+chmod
+  -R (recursively)
+mkdir
+ln
+  -s f1 f2 (make symbolic link of f1 at f2)
+last
+
+
+${!i} (double substitution)
+$1 (first parameter)
+$# (number of parameters)
+"$@" (list of parameters)
