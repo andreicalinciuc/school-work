@@ -105,6 +105,7 @@ mkdir
 ln
   -s f1 f2 (make symbolic link of f1 at f2)
 last
+  -w (display full user name)
 id
 
 ${!i} (double substitution)
