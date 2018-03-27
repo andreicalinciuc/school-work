@@ -7,6 +7,7 @@ cut
   -s (only delimited)
   --output-delimiter '->'
 grep
+  -w (match whole words)
   -v (invert selection / without)
   -i (ignore case)
   -F (fixed string, not regular expression <=> pass special characters without having to escape them)
