@@ -12,8 +12,6 @@ do
   fi
 done
 
-echo ${array[9]}
-
 for ((i=1; i<=$#; i++))
 do
   if ((${array[${!i}]}>$voturi))
