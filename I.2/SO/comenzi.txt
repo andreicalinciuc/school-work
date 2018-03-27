@@ -73,6 +73,7 @@ head
   -n 2 (show first 2 lines)
 ps
   -U vlad.bujoreanu (username)
+  -U root -u root (processes running as root)
 basename
 test (equivalent to [ ] ; equivalent to [[ ]] for extended syntax)
   -r (readable)
