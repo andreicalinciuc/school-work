@@ -114,3 +114,12 @@ $# (number of parameters)
 "$@" (list of parameters)
 $? (exit status of last command: 1 or 0)
 ${f#/fenrir/studs/vlad.bujoreanu/} (remove partial path from f)
+
+generic start:
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+  read n
+else
+  n=$1
+fi
