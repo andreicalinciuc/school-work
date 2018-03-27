@@ -29,6 +29,7 @@ find
     d (directory)
   -mtime -7 (modified LESS THAN 7 days ago)
   -mtime +7 (modified MORE THAN 7 days ago)
+  -size -5k (size LESS THAN 5 KB)
 stat
   -c (format)
     %n (filename)
