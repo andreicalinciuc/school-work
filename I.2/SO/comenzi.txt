@@ -45,7 +45,7 @@ rm
 g++
   -o file (executable file)
   2> output.txt (redirect stderr to file)
-  2>&1 (redirect stderr to stdout
+  2>&1 (redirect stderr to stdout)
 ls
   -a (show everything)
   -A (show almost everything, without . and .. )
