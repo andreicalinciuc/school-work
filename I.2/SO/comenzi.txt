@@ -100,7 +100,7 @@ mkdir
 ln
   -s f1 f2 (make symbolic link of f1 at f2)
 last
-
+id
 
 ${!i} (double substitution)
 $1 (first parameter)
