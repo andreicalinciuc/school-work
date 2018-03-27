@@ -76,6 +76,7 @@ ps
   -U vlad.bujoreanu (username)
   -U root -u root (processes running as root)
 basename
+dirname
 test (equivalent to [ ] ; equivalent to [[ ]] for extended syntax)
   -r (readable)
   -w (writable)
