@@ -108,6 +108,12 @@ last
   -w (display full user name)
 id
 
+(piping outputs)
+  1>log (stderr on screen, stdout on file)
+  2>log (stderr on file, stdout on screen)
+  2>&1 >log (not good)
+  >log 2>&1 (stderr on file, stdout on file)
+
 ${!i} (double substitution)
 $1 (first parameter)
 $# (number of parameters)
