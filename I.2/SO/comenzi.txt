@@ -96,6 +96,10 @@ cp
 mv
   -n (no overwrite)
 chmod
+  777 (read, write, execute for owner, group, others)
+  ugo=rwx (read, write, execute for owner, group, others)
+  u=rwx,g=rwx,o=rwx (read, write, execute for owner, group, others)
+  (= can be replaced with + or - depending on intentions)
   -R (recursively)
 mkdir
 ln
