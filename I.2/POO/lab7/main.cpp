@@ -8,7 +8,7 @@ int main()
     StrVector v = {"Test", "for", "C++"};
     auto count = v.GetCount();
     auto it = v.GetIterator();
-    for (auto index=0; index < count; index++, it++)
+    for (auto index = 0; index < count; index++, it++)
     {
         printf("%s\n", *it);
     }
