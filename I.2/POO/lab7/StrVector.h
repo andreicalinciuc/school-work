@@ -4,8 +4,6 @@
 
 using namespace std;
 
-const int Nmax = 100;
-
 class StrIterator
 {
   public:
@@ -33,16 +31,19 @@ class StrIterator
 
 class StrVector
 {
-    char *c[Nmax];
-    unsigned int size = 0;
+    char** c;
+    unsigned int size;
   public:
     StrVector (initializer_list <const char*> args)
-    {
+    { 
+        size = args.size();
+        c = new char* [size];
+        unsigned int index = 0;
         for (auto it : args)
         {
-            c[size] = new char (strlen (it) + 1);
-            strcpy (c[size], it);
-            size++;
+            c[index] = new char [strlen (it) + 1];
+            strcpy (c[index], it);
+            ++index;
         }
     }
     int GetCount()
