@@ -31,18 +31,18 @@ class StrIterator
 
 class StrVector
 {
-    char** c;
+    char** s;
     unsigned int size;
   public:
     StrVector (initializer_list <const char*> args)
     { 
         size = args.size();
-        c = new char* [size];
+        s = new char* [size];
         unsigned int index = 0;
         for (auto it : args)
         {
-            c[index] = new char [strlen (it) + 1];
-            strcpy (c[index], it);
+            s[index] = new char [strlen (it) + 1];
+            strcpy (s[index], it);
             ++index;
         }
     }
@@ -53,19 +53,19 @@ class StrVector
     StrIterator GetIterator()
     {
         StrIterator aux;
-        aux.it = &c[0];
+        aux.it = &s[0];
         return aux;
     }
     StrIterator begin()
     {
         StrIterator aux;
-        aux.it = &c[0];
+        aux.it = &s[0];
         return aux;
     }
     StrIterator end()
     {
         StrIterator aux;
-        aux.it = &c[size];
+        aux.it = &s[size];
         return aux;
     }
 };
