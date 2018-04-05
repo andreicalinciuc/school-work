@@ -1,5 +1,5 @@
 #include "StrVector.h"
-#include <iostream>
+#include <cstdio>
 
 using namespace std;
 
