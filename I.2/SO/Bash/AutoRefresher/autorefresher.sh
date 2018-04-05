@@ -11,7 +11,7 @@ while [ 1 ]
 do
   mv new.html old.html
   wget -q --user "$user" --password "$password" "$URL" -O new.html
-  if [[ -f old.html && -f new.html && $(cat old.html | wc -c) != 0 && $(cat new.html | wc -c) != 0 && $(diff new.html old.html -q | wc -c) != 0 ]]
+  if [[ -f old.html && -f new.html && $(cat old.html | wc -c) -ne 0 && $(cat new.html | wc -c) -ne 0 && $(diff new.html old.html -q | wc -c) -ne 0 ]]
   then
     echo "Pagina de la SO a fost modificată. Există posibilitatea să se fi afișat rezultatele!" | mail -s "[AutoRefresh] Pagina de la SO a fost modificată" "$mails"
     exit
