@@ -36,7 +36,7 @@ void ProcesatorNumaraCuvinte::Proceseaza (string sir)
 
 void ProcesatorNumaraCuvinte::Print()
 {
-    for (std::map <string, int>::iterator it = m.begin(); it != m.end(); ++it)
+    for (map <string, int>::iterator it = m.begin(); it != m.end(); ++it)
     {
         std::cout << it->first << ": " << it->second << ", ";
     }
