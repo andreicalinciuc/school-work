@@ -45,6 +45,14 @@ class StrVector
             ++index;
         }
     }
+    ~StrVector()
+    {
+        for (unsigned int i = 0; i < size; ++i)
+        {
+            delete[] s[i];
+        }
+        delete[] s;
+    }
     int GetCount()
     {
         return size;
