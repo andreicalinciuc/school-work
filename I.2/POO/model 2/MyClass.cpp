@@ -1,6 +1,6 @@
 #include "MyClass.h"
 
-pair <string, int> ListaCumparaturi::Cumparaturi (string s, int n)
+pair <string, int> Cumparaturi (string s, int n)
 {
     return make_pair(s, n);
 }
