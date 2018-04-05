@@ -18,10 +18,10 @@ ListaCumparaturi& ListaCumparaturi::operator -= (string s)
     return *this;
 }
 
-ListaCumparaturi ListaCumparaturi::operator | (ListaCumparaturi L2)
+ListaCumparaturi operator | (ListaCumparaturi L1, ListaCumparaturi L2)
 {
     ListaCumparaturi L3;
-    for (map <string, int>::iterator it = (*this).m.begin(); it != (*this).m.end(); ++it)
+    for (map <string, int>::iterator it = L1.m.begin(); it != L1.m.end(); ++it)
     {
         L3.m[it->first] += it->second;
     }
