@@ -1,13 +1,16 @@
 #include "MyClass.h"
 
-pair <string, int> Cumparaturi (string s, int n)
+Cumparaturi::Cumparaturi (string s, int n)
 {
-    return make_pair(s, n);
+    this->s = s;
+    this->n = n;
 }
 
-ListaCumparaturi& ListaCumparaturi::operator += (pair <string, int> p)
+ListaCumparaturi& ListaCumparaturi::operator += (const Cumparaturi &p)
 {
-    m.insert(p);
+    m[p.s] = p.n; //this is faster
+    //m.insert (make_pair (p.s, p.n)); //but you can also use this
+    //m.insert (pair <string, int> (p.s, p.n)); //or this
     return *this;
 }
 
