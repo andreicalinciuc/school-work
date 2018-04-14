@@ -1,10 +1,5 @@
 #include "MyClass.h"
 
-int Compare (int a, int b)
-{
-    return a > b;
-}
-
 Multime::Multime()
 {
     Count = 0;
@@ -41,13 +36,13 @@ int Multime::Min()
     return mini;
 }
 
-void Multime::Sort (int (*compare) (int, int))
+void Multime::Sort (int (*Compare) (int, int))
 {
     for (int i = 0; i < Count - 1; ++i)
     {
         for (int j = i+1; j < Count; ++j)
         {
-            if (compare (Numere[i], Numere[j])) std::swap (Numere[i], Numere[j]);
+            if (Compare (Numere[i], Numere[j])) std::swap (Numere[i], Numere[j]);
         }
     }
 }
