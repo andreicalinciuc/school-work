@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <cstring>
 
-int Compare (int, int);
-
 class Multime
 {
     int Numere[100];
@@ -12,7 +10,7 @@ class Multime
     Multime (int* Lista, int size);
     int Max();
     int Min();
-    void Sort (int (*Compare) (int, int));
+    void Sort (int (*) (int, int));
     int GetSize();
     int& operator [] (int index);
     operator double ();
