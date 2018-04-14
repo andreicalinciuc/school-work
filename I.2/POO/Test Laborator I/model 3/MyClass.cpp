@@ -90,6 +90,7 @@ Multime operator & (Multime& m1, Multime& m2)
         if (!found)
         {
             m3.Numere[m3.Count++] = m2.Numere[i];
+            if (m3.Count == 100) return m3;
         }
     }
     return m3;
