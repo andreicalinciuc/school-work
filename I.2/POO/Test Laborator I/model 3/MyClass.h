@@ -5,7 +5,6 @@ int Compare (int, int);
 
 class Multime
 {
-    public:
     int Numere[100];
     int Count;
   public:
