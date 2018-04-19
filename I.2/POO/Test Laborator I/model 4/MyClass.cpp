@@ -2,6 +2,10 @@
 
 map <string, int> RomanNumber::m ={ { "I", 1 }, { "II", 2 }, { "III", 3 }, { "IV", 4 }, { "V", 5 }, { "VI", 6 }, { "VII", 7 }, { "VIII", 8 }, { "IX", 9 }, { "X", 10 },{ "XI", 11 }, { "XII", 12 }, { "XIII", 13 }, { "XIV", 14 }, { "XV", 15 }, { "XVI", 16 }, { "XVII", 17 }, { "XVIII", 18 }, { "XIX", 19 }, { "XX", 20 }, { "XXI", 21 }, { "XXII", 22 }, { "XXIII", 23 }, { "XXIV", 24 }, { "XXV", 25 }, { "XXVI", 26 }, { "XXVII", 27 }, { "XXVIII", 28 }, { "XXIX", 29 }, { "XXX", 30 } };
 
+bool RomanNumber::InitializedVector = 0;
+
+vector <string> RomanNumber::v(30);
+
 RomanNumber::RomanNumber ()
 {
 
@@ -28,11 +32,15 @@ int RomanNumber::FromRoman (const char* number)
 
 const char* RomanNumber::FromArabic (int number)
 {
-    for (map <string, int>::iterator it = m.begin(); it != m.end(); ++it)
+    if (InitializedVector == 0)
     {
-        if (it->second == number) return it->first.c_str();
+        for (map <string, int>::iterator it = m.begin(); it != m.end(); ++it)
+        {
+            v.insert (v.begin() + it->second, it->first);
+        }
+        InitializedVector = 1;
     }
-    return nullptr;
+    return v.at(number).c_str();
 }
 
 RomanNumber::operator const char* ()
