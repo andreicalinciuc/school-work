@@ -1,4 +1,5 @@
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -6,6 +7,8 @@ class RomanNumber
 {
     string s;
     static map <string, int> m;
+    static bool InitializedVector;
+    static vector <string> v;
   public:
     RomanNumber();
     RomanNumber (string s);
