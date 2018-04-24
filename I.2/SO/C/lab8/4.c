@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <sys/wait.h>
 
 int main (int argc, char** argv)
 {
@@ -11,7 +12,7 @@ int main (int argc, char** argv)
         if (pid != 0)
         {
             wait (&codterm);
-            printf ("Sunt procesul %d, avand PID-ul: %d, parintele are PID-ul: %d, iar fiul creat are PID-ul: %d si s-a terminat cu codul: %d.\n", i, getpid(), getppid(), pid, codterm >> 8);
+            printf ("Sunt procesul %d, avand PID-ul: %d, parintele are PID-ul: %d, iar fiul creat are PID-ul: %d si s-a terminat cu codul: %d.\n", i, getpid(), getppid(), pid, WEXITSTATUS(codterm));
             return i;
         }
         else if (pid == 0 && i == n-1)
