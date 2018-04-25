@@ -1,0 +1,19 @@
+outliers_iqr = function (sample)
+{
+  sample = c (1, 91, 38, 72, 13, 27, 11, 85, 5, 22, 20, 19, 8, 17, 11, 15, 13, 23, 14, 17); #this can be commented out
+  q = quantile (sample);
+  outliers = vector();
+  j = 0;
+  Q1 = as.vector(q)[2];
+  Q3 = as.vector(q)[4];
+  IQR = as.vector(q)[4] - as.vector(q)[2];
+  for (i in 1 : length (sample))
+  {
+    if (sample[i] < Q1 - 1.5 * IQR | sample[i] > Q3 + 1.5 * IQR)
+    {
+      j = j + 1;
+      outliers[j] = sample[i];
+    }
+  }
+  print (outliers);
+}
