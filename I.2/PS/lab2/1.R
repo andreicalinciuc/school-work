@@ -1,5 +1,5 @@
-Ex1 = function (file)
+Ex1 = function ()
 {
-  x = scan (file);
+  x = scan ("sample1.txt");
   stem (x);
 }
