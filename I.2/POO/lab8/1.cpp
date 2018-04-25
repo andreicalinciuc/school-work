@@ -3,7 +3,7 @@
 #include <functional>
 
 template <class T>
-void Sort (std::vector <T> &lista, int (*Compare) (int &e1, int &e2))
+void Sort (std::vector <T> &lista, int (*Compare) (T &e1, T &e2))
 {
     for (unsigned int i = 0; i < lista.size() - 1; i++)
     {
@@ -24,8 +24,8 @@ int main()
         std::cin >> x;
         v.push_back (x);
     }
-    auto cmp = [] (int &e1, int &e2) -> int {return e1 > e2;};
-    Sort(v, cmp);
+    auto cmp = [] (auto &e1, auto &e2) -> int {return e1 > e2;};
+    Sort <int> (v, cmp);
     for (i = 0; i < n; i++)
     {
         std::cout << v[i] << " ";
