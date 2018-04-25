@@ -10,7 +10,7 @@ int cmp (T &e1, T &e2)
 }
 
 template <class T>
-void Sort(std::vector<T> &lista, int (*Compare)(T &e1, T &e2))
+void Sort (std::vector <T> &lista, int (*Compare) (T &e1, T &e2))
 {
     for (unsigned int i = 0; i < lista.size() - 1; i++)
     {
