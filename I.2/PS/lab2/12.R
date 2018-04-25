@@ -1,4 +1,4 @@
-Ex11 = function ()
+Ex12 = function ()
 {
   sample = scan ("studenti.txt");
   m1 = mean (sample);
