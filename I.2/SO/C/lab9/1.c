@@ -36,19 +36,6 @@ int main()
 	int pid;
 	pid = fork();
 
-/*	if (pid == 0)
-	{
-		sleep(3);
-		printf("Copil %d", getpid());
-		printf("\n");
-	}
-	else
-	{
-		printf("Parinte %d", pid);
-		printf("\n");
-	}
-	*/
-
 	if (pid == 0)
 	{
 		com ("fisier.txt", "fisier2.txt"); //com ("fiu", "parinte");
