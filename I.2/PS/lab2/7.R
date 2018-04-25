@@ -13,5 +13,6 @@ outliers_mean = function (sample)
       outliers[j] = sample[i];
     }
   }
-  print (outliers);
+  print (j);
+  if (j > 0) print (outliers);
 }
