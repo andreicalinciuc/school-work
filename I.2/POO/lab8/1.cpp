@@ -1,22 +1,15 @@
 #include <iostream>
 #include <vector>
-
-using namespace std;
-
-template <class T>
-int cmp (T &e1, T &e2)
-{
-    return e1 > e2;
-}
+#include <functional>
 
 template <class T>
-void Sort (std::vector <T> &lista, int (*Compare) (T &e1, T &e2))
+void Sort (std::vector <T> &lista, int (*Compare) (int &e1, int &e2))
 {
     for (unsigned int i = 0; i < lista.size() - 1; i++)
     {
         for (unsigned int j = i + 1; j < lista.size(); j++)
         {
-            if (Compare (lista[i], lista[j])) swap (lista[i], lista[j]);
+            if (Compare (lista[i], lista[j])) std::swap (lista[i], lista[j]);
         }
     }
 }
@@ -24,16 +17,17 @@ void Sort (std::vector <T> &lista, int (*Compare) (T &e1, T &e2))
 int main()
 {
     int i, n, x;
-    vector <int> v;
-    cin >> n;
+    std::vector <int> v;
+    std::cin >> n;
     for (i = 0; i < n; i++)
     {
-        cin >> x;
+        std::cin >> x;
         v.push_back (x);
     }
+    auto cmp = [] (int &e1, int &e2) -> int {return e1 > e2;};
     Sort(v, cmp);
     for (i = 0; i < n; i++)
     {
-        cout << v[i] << " ";
+        std::cout << v[i] << " ";
     }
 }
