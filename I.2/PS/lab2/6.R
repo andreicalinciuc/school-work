@@ -1,6 +1,8 @@
 Ex6 = function ()
 {
   maxi = -1;
+  n = 0;
+  sol = vector();
   v = scan ("sample1.txt");
   sort(v);
   max = v[length(v)];
@@ -14,9 +16,18 @@ Ex6 = function ()
     if (viz[i] > maxi)
     {
       maxi = viz[i];
-      sol = i;
+
     }
   }
-  print (sol);
+  for (i in 1 : max)
+  {
+    if (viz[i] == maxi)
+    {
+      n = n + 1;
+      sol[n] = i;
+    } 
+  }
   print (maxi);
+  print (n);
+  print (sol);
 }
