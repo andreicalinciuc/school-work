@@ -16,7 +16,6 @@ Ex6 = function ()
     if (viz[i] > maxi)
     {
       maxi = viz[i];
-
     }
   }
   for (i in 1 : max)
