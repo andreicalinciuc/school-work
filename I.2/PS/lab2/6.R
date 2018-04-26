@@ -4,9 +4,9 @@ Ex6 = function ()
   n = 0;
   sol = vector();
   v = scan ("sample1.txt");
-  sort(v);
+  sort (v);
   max = v[length(v)];
-  viz = vector(,max);
+  viz = vector (,max);
   for (i in 1 : length (v))
   {
     viz[v[i]] = viz[v[i]] + 1;
