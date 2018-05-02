@@ -26,7 +26,7 @@ B2 = function (M)
     M = M[-e[2], ];
     M = M[ ,-e[2]];
   }
-  return (M);
+  return (M[1, 2]);
 }
 
 #B2 (m);
