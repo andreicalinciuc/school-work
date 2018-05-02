@@ -11,5 +11,5 @@ Ex1 = function (M)
     i = i+1;
     aux = aux + M[2, i];
   }
-  print (M[1, i+1]);
+  return (M[1, i+1]);
 }
