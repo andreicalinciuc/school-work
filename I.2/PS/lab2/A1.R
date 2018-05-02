@@ -1,4 +1,4 @@
-Ex10 = function (k)
+A1 = function (k)
 {
   k = 20; #this can and should be commented out
   k = k-1; #for correctitude of the plots
