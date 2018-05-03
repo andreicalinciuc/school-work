@@ -8,6 +8,11 @@ class Exceptie1 : public exception
 	virtual const char* what() const throw();
 };
 
+class Exceptie2 : public exception
+{
+    virtual const char* what() const throw();
+};
+
 class Compare
 {
   public:

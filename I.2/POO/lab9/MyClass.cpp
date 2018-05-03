@@ -5,6 +5,11 @@ const char* Exceptie1::what() const throw()
     return "Index-ul este in afara domeniului!";
 }
 
+const char* Exceptie2::what() const throw()
+{
+    return "Capacitatea nu este suficienta!";
+}
+
 int IntCompare::CompareElements (void* e1, void* e2)
 {
     int aux1 = *(int*)e1, aux2 = *(int*)e2;
@@ -100,11 +105,13 @@ Array<T>::Array (const int *v, const int n)
 template <class T>
 bool Array<T>::operator() (const int *v, const int n)
 {
+    Exceptie2 OutOfMemory;
     if (Capacity < n)
     {
-        this->~Array();
-        Capacity = n;
-        List = new T* [n];
+        throw OutOfMemory;
+        //this->~Array();
+        //Capacity = n;
+        //List = new T* [n];
     }
     Size = n;
     for (int i = 0; i < n; ++i)
@@ -125,6 +132,11 @@ T& Array<T>::operator [] (int index)
 template <class T>
 const Array<T>& Array<T>::operator += (const T &newElem)
 {
+    Exceptie2 OutOfMemory;
+    if (Capacity < Size + 1)
+    {
+        throw OutOfMemory;
+    }
     List[++Size] = (int*)&newElem;
     return *this;
 }
@@ -133,7 +145,9 @@ template <class T>
 const Array<T>& Array<T>::Insert (int index, const T &newElem)
 {
     Exceptie1 OutOfRange;
+    Exceptie2 OutOfMemory;
     if (index < 0 || index > Size - 1) throw OutOfRange;
+    if (Capacity < Size + 1) throw OutOfMemory;
     for (int i = Size - 1; i >= index; --i)
     {
         List[i+1] = List[i];
@@ -147,7 +161,9 @@ template <class T>
 const Array<T>& Array<T>::Insert (int index, const Array<T> otherArray)
 {
     Exceptie1 OutOfRange;
+    Exceptie2 OutOfMemory;
     if (index < 0 || index > Size - 1) throw OutOfRange;
+    if (Capacity < Size + otherArray.Size) throw OutOfMemory;
     for (int i = Size - 1; i >= index; --i)
     {
         List[i + otherArray.Size] = List[i];
@@ -176,11 +192,13 @@ const Array<T>& Array<T>::Delete (int index)
 template <class T>
 bool Array<T>::operator = (const Array<T> &otherArray)
 {
-    if (otherArray.Size > Capacity)
+    Exceptie2 OutOfMemory;
+    if (Capacity < otherArray.Size)
     {
-        this->~Array();
-        Capacity = otherArray.Capacity;
-        List = new T* [otherArray.Capacity];
+        throw OutOfMemory;
+        //this->~Array();
+        //Capacity = otherArray.Capacity;
+        //List = new T* [otherArray.Capacity];
     }
     Size = otherArray.Size;
     for (int i = 0; i < otherArray.Size; ++i)

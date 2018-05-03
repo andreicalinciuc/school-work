@@ -21,10 +21,10 @@ int main()
     for (auto it : a) cout << a[it] << " ";
     cout << endl;
     delete cmp2;
-
     try
     {
-        cout << a[6];
+        //cout << a[5];
+        //int x = 6; a += x;
     }
     catch (exception& e)
     {
