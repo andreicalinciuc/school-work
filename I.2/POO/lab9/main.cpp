@@ -21,6 +21,7 @@ int main()
     for (auto it : a) cout << a[it] << " ";
     cout << endl;
     delete cmp2;
+
     try
     {
         //cout << a[5];
