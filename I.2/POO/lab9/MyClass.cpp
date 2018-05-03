@@ -58,6 +58,12 @@ int ArrayIterator<T>::operator * ()
 }
 
 template <class T>
+T* ArrayIterator<T>::GetElement()
+{
+    return ptr->List[Current];
+}
+
+template <class T>
 Array<T>::Array()
 {
     Capacity = 0;
@@ -335,6 +341,7 @@ ArrayIterator<T> Array<T>::GetBeginIterator()
 {
     ArrayIterator<T> aux;
     aux.Current = 0;
+    aux.ptr = this;
     return aux;
 }
 
@@ -343,6 +350,7 @@ ArrayIterator<T> Array<T>::GetEndIterator()
 {
     ArrayIterator<T> aux;
     aux.Current = Size;
+    aux.ptr = this;
     return aux;
 }
 

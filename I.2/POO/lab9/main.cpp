@@ -5,7 +5,7 @@ int main()
     int n = 5;
     int v[5] = {1, 5, 3, 4, 2};
     Array <int> a (v, n);
-    
+
     for (auto it : a)  cout << a[it] << " ";
     cout << endl;
     auto cmp1 = [] (const int &e1, const int &e2) -> int {if (e1 == e2) return 1; else if (e1 < e2) return -1; else return 1;};
@@ -21,6 +21,10 @@ int main()
     for (auto it : a) cout << a[it] << " ";
     cout << endl;
     delete cmp2;
+
+    auto it = a.GetBeginIterator();
+    ++it;
+    cout << *(it.GetElement());
 
     try
     {

@@ -26,10 +26,14 @@ class IntCompare : public Compare
 };
 
 template <class T>
+class Array;
+
+template <class T>
 class ArrayIterator
 {
   public: //private:
     int Current; //mai adaugati si alte date si functii necesare pentru iterator
+    Array<T>* ptr;
   public:
     ArrayIterator();
     ArrayIterator<T>& operator ++ ();
@@ -37,6 +41,7 @@ class ArrayIterator
     bool operator = (ArrayIterator<T>& otherIterator);
     bool operator != (ArrayIterator<T> otherIterator);
     int operator * ();
+    T* GetElement();
 };
 
 template <class T>
