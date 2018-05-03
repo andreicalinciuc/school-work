@@ -1,8 +1,16 @@
 #include "MyClass.h"
 
+const char* Exceptie1::what() const throw()
+{
+    return "Index-ul este in afara domeniului!";
+}
+
 int IntCompare::CompareElements (void* e1, void* e2)
 {
-    return *(int*)e1 > *(int*)e2;
+    int aux1 = *(int*)e1, aux2 = *(int*)e2;
+    if (aux1 == aux2) return 0;
+    else if (aux1 < aux2) return -1;
+    else return 1;
 }
 
 template <class T>
@@ -33,13 +41,13 @@ bool ArrayIterator<T>::operator = (ArrayIterator<T>& otherIterator)
 }
 
 template <class T>
-bool ArrayIterator<T>::operator != (ArrayIterator<T>& otherIterator)
+bool ArrayIterator<T>::operator != (ArrayIterator<T> otherIterator)
 {
     return Current != otherIterator.Current;
 }
 
 template <class T>
-int ArrayIterator<T>::GetElement()
+int ArrayIterator<T>::operator * ()
 {
     return Current;
 }
@@ -54,7 +62,7 @@ Array<T>::Array()
 template <class T>
 Array<T>::~Array()
 {
-    delete[] List;
+    if (Capacity > 0) delete[] List;
 }
 
 template <class T>
@@ -68,11 +76,8 @@ Array<T>::Array (int capacity)
 template <class T>
 Array<T>::Array (const Array<T> &otherArray)
 {
-    if (otherArray.Size > Capacity)
-    {
-        Capacity = otherArray.Capacity;
-        List = new T* [otherArray.Capacity];
-    }
+    Capacity = otherArray.Capacity;
+    List = new T* [otherArray.Capacity];
     Size = otherArray.Size;
     for (int i = 0; i < otherArray.Size; ++i)
     {
@@ -81,8 +86,39 @@ Array<T>::Array (const Array<T> &otherArray)
 }
 
 template <class T>
+Array<T>::Array (const int *v, const int n)
+{
+    Capacity = n;
+    List = new T* [n];
+    Size = n;
+    for (int i = 0; i < n; ++i)
+    {
+        List[i] = (int*)&v[i];
+    }
+}
+
+template <class T>
+bool Array<T>::operator() (const int *v, const int n)
+{
+    if (Capacity < n)
+    {
+        this->~Array();
+        Capacity = n;
+        List = new T* [n];
+    }
+    Size = n;
+    for (int i = 0; i < n; ++i)
+    {
+        List[i] = (int*)&v[i];
+    }
+    return 1;
+}
+
+template <class T>
 T& Array<T>::operator [] (int index)
 {
+    Exceptie1 OutOfRange;
+    if (index < 0 || index > Size - 1) throw OutOfRange;
     return *List[index];
 }
 
@@ -96,6 +132,8 @@ const Array<T>& Array<T>::operator += (const T &newElem)
 template <class T>
 const Array<T>& Array<T>::Insert (int index, const T &newElem)
 {
+    Exceptie1 OutOfRange;
+    if (index < 0 || index > Size - 1) throw OutOfRange;
     for (int i = Size - 1; i >= index; --i)
     {
         List[i+1] = List[i];
@@ -108,6 +146,8 @@ const Array<T>& Array<T>::Insert (int index, const T &newElem)
 template <class T>
 const Array<T>& Array<T>::Insert (int index, const Array<T> otherArray)
 {
+    Exceptie1 OutOfRange;
+    if (index < 0 || index > Size - 1) throw OutOfRange;
     for (int i = Size - 1; i >= index; --i)
     {
         List[i + otherArray.Size] = List[i];
@@ -123,6 +163,8 @@ const Array<T>& Array<T>::Insert (int index, const Array<T> otherArray)
 template <class T>
 const Array<T>& Array<T>::Delete (int index)
 {
+    Exceptie1 OutOfRange;
+    if (index < 0 || index > Size - 1) throw OutOfRange;
     for (int i = index; i < Size; ++i)
     {
         List[i] = List[i+1];
@@ -167,7 +209,7 @@ void Array<T>::Sort (int (*compare) (const T&, const T&))
     {
         for (int j = i + 1; j < Size; ++j)
         {
-            if (compare(*List[i], *List[j])) std::swap (List[i], List[j]);
+            if (compare(*List[i], *List[j]) > 0) std::swap (List[i], List[j]);
         }
     }
 }
@@ -179,7 +221,7 @@ void Array<T>::Sort (Compare *comparator)
     {
         for (int j = i + 1; j < Size; ++j)
         {
-            if (comparator->CompareElements(List[i], List[j])) std::swap (List[i], List[j]);
+            if (comparator->CompareElements(List[i], List[j]) > 0) std::swap (List[i], List[j]);
         }
     }
 }
@@ -284,6 +326,18 @@ ArrayIterator<T> Array<T>::GetEndIterator()
     ArrayIterator<T> aux;
     aux.Current = Size;
     return aux;
+}
+
+template <class T>
+ArrayIterator<T> Array<T>::begin()
+{
+    return GetBeginIterator();
+}
+
+template <class T>
+ArrayIterator<T> Array<T>::end()
+{
+    return GetEndIterator();
 }
 
 template class ArrayIterator <int>;

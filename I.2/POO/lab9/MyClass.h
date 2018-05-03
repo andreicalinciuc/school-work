@@ -1,9 +1,18 @@
 #include <iostream>
+#include <exception>
+
+using namespace std;
+
+class Exceptie1 : public exception
+{
+	virtual const char* what() const throw();
+};
 
 class Compare
 {
   public:
     virtual int CompareElements (void* e1, void* e2) = 0;
+    virtual ~Compare() {};
 };
 
 class IntCompare : public Compare
@@ -21,8 +30,8 @@ class ArrayIterator
     ArrayIterator<T>& operator ++ ();
     ArrayIterator<T>& operator -- ();
     bool operator = (ArrayIterator<T>& otherIterator);
-    bool operator != (ArrayIterator<T>& otherIterator);
-    int GetElement();
+    bool operator != (ArrayIterator<T> otherIterator);
+    int operator * ();
 };
 
 template <class T>
@@ -37,6 +46,8 @@ class Array
     ~Array(); // destructor
     Array (int capacity); // Lista e alocata cu 'capacity' elemente
     Array (const Array<T> &otherArray); // constructor de copiere
+    Array (const int *v, const int n); //constructor de copiere utilizabil
+    bool operator () (const int *v, const int n);
     T& operator[] (int index); // arunca exceptie daca index este out of range
     const Array<T>& operator += (const T &newElem); // adauga un element de tipul T la sfarsitul listei si returneaza this
     const Array<T>& Insert (int index, const T &newElem); // adauga un element pe pozitia index, retureaza this. Daca index e invalid arunca o exceptie
@@ -57,4 +68,6 @@ class Array
     int GetCapacity();
     ArrayIterator<T> GetBeginIterator();
     ArrayIterator<T> GetEndIterator();
+    ArrayIterator<T> begin();
+    ArrayIterator<T> end();
 };

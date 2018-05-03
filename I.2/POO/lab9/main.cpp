@@ -1,19 +1,33 @@
 #include "MyClass.h"
 
-using namespace std;
-
 int main()
 {
-    Array <int> a;
-    int x = 5;
-    int y = 4;
-    a.List = new int* [100];
-    a.List[0] = &x;
-    a.List[1] = &y;
-    a.Size = 2;
-    //auto cmp = [] (const int &e1, const int &e2) -> int {return e1 > e2;};
-    //a.Sort (cmp);
-    Compare *cmp = new IntCompare;
-    a.Sort(cmp);
-    cout << *a.List[0] << " " << *a.List[1] << " " << a.BinarySearch (y);
+    int n = 5;
+    int v[5] = {1, 5, 3, 4, 2};
+    Array <int> a (v, n);
+    
+    for (auto it : a)  cout << a[it] << " ";
+    cout << endl;
+    auto cmp1 = [] (const int &e1, const int &e2) -> int {if (e1 == e2) return 1; else if (e1 < e2) return -1; else return 1;};
+    a.Sort (cmp1);
+    for (auto it : a) cout << a[it] << " ";
+    cout << endl;
+    
+    a (v, n);
+    for (auto it : a) cout << a[it] << " ";
+    cout << endl;
+    Compare *cmp2 = new IntCompare;
+    a.Sort(cmp2);
+    for (auto it : a) cout << a[it] << " ";
+    cout << endl;
+    delete cmp2;
+
+    try
+    {
+        cout << a[6];
+    }
+    catch (exception& e)
+    {
+        cout << "Exceptie: " << e.what() << endl;
+    }
 }
