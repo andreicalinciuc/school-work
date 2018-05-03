@@ -11,6 +11,11 @@ void creeaza_fii (int i)
         for (j=1; j<=k; j++)
         {
             pid[j] = fork();
+            if (pid[j] == -1)
+            {
+                perror ("Eroare la fork");
+                exit (-1);
+            }
             if (pid[j] == 0)
             {
                 count = j;

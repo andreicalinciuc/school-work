@@ -29,6 +29,11 @@ int main()
     fclose (f);
     int pid;
     pid = fork();
+    if (pid == -1)
+    {
+        perror ("Eroare la fork");
+        exit (-1);
+    }
     if (pid == 0)
     {
         dialog ("fisier1.txt", "fisier2.txt");

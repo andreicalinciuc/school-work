@@ -9,6 +9,11 @@ int main (int argc, char** argv)
     for (i=1; i<=n; i++)
     {
         pid = fork();
+        if (pid == -1)
+        {
+            perror ("Eroare la fork");
+            exit (-1);
+        }
         if (pid == 0)
         {
             printf("Sunt procesul fiu %d, avand PID-ul: %d, iar parintele meu este procesul cu PID-ul: %d.\n", i, getpid(), getppid());

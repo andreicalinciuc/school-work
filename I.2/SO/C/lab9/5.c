@@ -9,6 +9,11 @@ void creeaza_fiu (int i)
     if (i < n)
     {
         pid = fork();
+        if (pid == -1)
+        {
+            perror ("Eroare la fork");
+            exit (-1);
+        }
         if (pid != 0)
         {
             wait (&codterm);

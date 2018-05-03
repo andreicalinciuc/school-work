@@ -5,6 +5,11 @@ void master_init (int n, char *f1, char *f2)
 {
     int pid1, pid2;
     pid1 = fork();
+    if (pid1 == -1)
+    {
+        perror ("Eroare la fork");
+        exit (-1);
+    }
     if (pid1 == 0)
     {
         slave_work (n, f1, 0);
@@ -12,6 +17,11 @@ void master_init (int n, char *f1, char *f2)
     }
     wait();
     pid2 = fork();
+    if (pid2 == -1)
+    {
+        perror ("Eroare la fork");
+        exit (-1);
+    }
     if (pid2 == 0)
     {
         slave_work (n, f2, 1);
