@@ -11,7 +11,7 @@ int numara_caractere (char* filename)
     }
     fd = open (filename, 0, O_RDONLY);
     if (fd == -1) return 0; //eroare la deschidere
-    while (flag = read (fd, &c, 1) > 0)
+    while ((flag = read (fd, &c, 1)) > 0)
     {
         aparitii[c]++;
     }
