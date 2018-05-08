@@ -1,22 +1,23 @@
 #include <stdio.h>
 #include <fcntl.h>
-//#include <sys/types.h>
-//#include <sys/stat.h>
 
 int numara_caractere (char* filename)
 {
-    int aparitii[256], fd, i;
+    int aparitii[256], fd, i, flag;
     unsigned char c;
     for (i=0; i<256; i++)
     {
         aparitii[i] = 0;
     }
     fd = open (filename, 0, O_RDONLY);
-    if (fd == -1) return 0;
-    while (read (fd, &c, 1) > 0)
+    if (fd == -1) return 0; //eroare la deschidere
+    while (flag = read (fd, &c, 1) > 0)
     {
         aparitii[c]++;
     }
+    if (flag == -1) return 0; //eroare la citire
+    flag = close (fd);
+    if (flag == -1) return 0; //eroare la inchidere
     for (i=0; i<256; i++)
     {
         if (aparitii[i])
@@ -57,12 +58,12 @@ char* citeste_tastatura()
 
 void main (int argc, char** argv)
 {
-    if (argc<2)
+    if (argc < 2)
     {
-        numara_caractere(citeste_tastatura());
+        numara_caractere (citeste_tastatura());
     }
     else
     {
-        numara_caractere(argv[1]);
+        numara_caractere (argv[1]);
     }
 }
