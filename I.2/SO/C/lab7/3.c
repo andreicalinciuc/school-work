@@ -11,7 +11,7 @@ void afisare (char* path)
     char perm[10] = "---------";
 
     flag = stat (path, &st);
-    if (flag !=0 ) exit (2); //eroare la stat
+    if (flag !=0 ) return; //eroare la stat
     
     printf ("Nume: %s\n", path);
 
@@ -57,11 +57,11 @@ void procesare (char *path)
 
     afisare (path);
     flag = stat (path, &st);
-    if (flag != 0) exit (2); //eroare la stat
+    if (flag != 0) return; //eroare la stat
     
     if (S_ISDIR (st.st_mode) != 0)
     {
-        dir = opendir(path); if (dir == 0) exit (3); //eroare deschidere director
+        dir = opendir(path); if (dir == 0) return; //eroare deschidere director
         while (1)
         {
             de = readdir (dir);
@@ -80,7 +80,7 @@ int main (int argc, char** argv)
 {
     int flag;
     struct stat st;
-    if (argc < 2) exit (1);
+    if (argc < 2) exit (1); //nu a fost dat directorul
     flag = stat (argv[1], &st);
     if (flag != 0) exit (2); //eroare la stat
     if (S_ISDIR (st.st_mode) == 0) exit(3); //nu este director
