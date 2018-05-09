@@ -22,7 +22,7 @@ margin_of_error = function (MC_value, actual_value)
 
 integrate = function (x)
 {
-  return (-(x*x*x)/3 + x*x + 3*x);
+  return (-(x*x*x)/3 + x*x + 3*x); //integrated equation on paper first
 }
 
 actual_area = function()
