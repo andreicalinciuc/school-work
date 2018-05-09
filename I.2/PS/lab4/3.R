@@ -3,8 +3,8 @@ parabola_area = function (N)
   N_C = 0;
   for (i in 1:N)
   {
-    x = runif(1, -1, 3);
-    y = runif(1, 0, 4);
+    x = runif (1, -1, 3);
+    y = runif (1, 0, 4);
     if (y <= -(x*x) + 2*x + 3)
       N_C = N_C + 1;
   }
