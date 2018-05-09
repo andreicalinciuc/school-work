@@ -3,9 +3,9 @@ sphere_volume = function (N)
   N_C = 0;
   for (i in 1:N)
   {
-    x = runif(1, -1, 1);
-    y = runif(1, -1, 1);
-    z = runif(1, -1, 1);
+    x = runif (1, -1, 1);
+    y = runif (1, -1, 1);
+    z = runif (1, -1, 1);
     if (x*x + y*y + z*z <= 1)
       N_C = N_C + 1;
   }
