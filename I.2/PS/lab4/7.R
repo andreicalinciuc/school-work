@@ -1,4 +1,5 @@
-Nr_days = function() {
+Nr_days = function()
+{
   nr_days = 1;
   last_errors = c (11, 16, 18);
   nr_errors = 11;
