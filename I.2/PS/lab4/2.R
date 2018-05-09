@@ -3,8 +3,8 @@ ellipse_area = function (N)
   N_C = 0;
   for (i in 1:N)
   {
-    x = runif(1, -2, 2);
-    y = runif(1, -1, 1);
+    x = runif (1, -2, 2);
+    y = runif (1, -1, 1);
     if (x*x + 4*y*y <= 4)
       N_C = N_C + 1;
   }
