@@ -19,7 +19,6 @@ margin_of_error = function (MC_value, actual_value)
   print (MC_value);
   print (actual_value);
   print (abs_error);
-  print (rel_error);
   print (percent_error);
 }
 
