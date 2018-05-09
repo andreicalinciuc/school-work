@@ -27,4 +27,5 @@ N_min = function()
   return (p * (1 - p) * ((z / epsilon) ^ 2));
 }
 
+print (N_min());
 print (MC_generate(N_min() + 1));
