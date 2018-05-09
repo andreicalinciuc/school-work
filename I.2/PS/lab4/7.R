@@ -22,4 +22,4 @@ MC_Nr_days = function (N)
   return (s / N);
 }
 
-print (MC_Nr_days (10000)); #aprox 860 zile
+print (MC_Nr_days (10000)); #aproximativ 860 zile
