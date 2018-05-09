@@ -22,7 +22,7 @@ margin_of_error = function (MC_value, actual_value)
   print (rel_error);
 }
 
-pi = 3.14159265358;
+pi = 3.1415;
 actual_volume = 4 * pi / 3;
 
 margin_of_error (sphere_volume (50000), actual_volume);
