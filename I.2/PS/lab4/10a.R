@@ -56,4 +56,4 @@ MC_simulate = function (N)
   return (occ / N);
 }
 
-print (MC_simulate(1000));
+print (MC_simulate (1000));
