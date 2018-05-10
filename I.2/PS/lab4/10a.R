@@ -1,7 +1,7 @@
 simulate = function()
 {
-  infected = vector(, 20);
-  first = sample(1:20, 1);
+  infected = vector (, 20);
+  first = sample (1:20, 1);
   infected[first] = 1;
   count = 1;
   nr_days = 1;
