@@ -28,4 +28,4 @@ N_min = function()
 }
 
 print (N_min());
-print (MC_generate(N_min() + 1));
+print (MC_generate (N_min() + 1));
