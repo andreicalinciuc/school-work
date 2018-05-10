@@ -4,9 +4,9 @@ MC_web = function (N)
   for (i in 1:N)
   {
     x = rexp (1,1);
-    g1 = rgamma (1, shape=5, scale=3);
-    g2 = rgamma (1, shape=7, scale=5);
-    g3 = rgamma (1, shape=5, scale=2);
+    g1 = rgamma (1, shape = 5, scale = 3);
+    g2 = rgamma (1, shape = 7, scale = 5);
+    g3 = rgamma (1, shape = 5, scale = 2);
     u = runif (1,0,1);
     if (u < 0.5)
     {
