@@ -31,5 +31,5 @@ test_proportion = function (alfa, n, succese, p0)
   }
 }
 
-test_proportion (0.1, 112, 14, 0.1)
-test_proportion (0.5, 112, 14, 0.1)
+test_proportion (0.01, 112, 14, 0.1)
+test_proportion (0.05, 112, 14, 0.1)
