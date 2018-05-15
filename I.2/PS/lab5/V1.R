@@ -5,6 +5,30 @@ test_proportion = function (alfa, n, succese, p0)
   critical_z = qnorm (1 - alfa, 0, 1);
   print (z);
   print (critical_z);
+  if (z > 0)
+  {
+    print ("asimetrica la dreapta");
+    if (z > critical_z)
+    {
+      print ("ipoteza nula respinsa");
+    }
+    else
+    {
+      print ("nu exista suficiente dovezi");
+    }
+  }
+  if (z < 0)
+  {
+    print ("asimetrica la stanga");
+    if (z < critical_z)
+    {
+      print ("ipoteza nula respinsa");
+    }
+    else
+    {
+      print ("nu exista suficiente dovezi");
+    }
+  }
 }
 
 test_proportion (0.01, 100, 63, 0.6)
