@@ -12,17 +12,18 @@ int main()
   p=fork();
   if(p==-1) exit(2);
   if(!p)
-  {
+  { 
     dup2(q[0],0);
     close(q[1]);
     while( read(0,&w,1) != 0)
-      printf("%c",w);
-    wait(NULL);
+    printf("%c",w);
   }
   else
   {
     text="salutari!";
     write(q[1],text,strlen(text));
+    close(q[1]);
+    wait(NULL);
   }
   return 0;
 }
