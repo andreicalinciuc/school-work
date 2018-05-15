@@ -36,7 +36,7 @@ test_proportion = function (alfa, n, succese, p0)
     critical_z = qnorm (1 - alfa/2, 0, 1);
     print (critical_z);
     print ("simetrica");
-    if (abs(z) > abs(critical_z))
+    if (abs (z) > abs (critical_z))
     {
       print ("ipoteza nula respinsa");
     }
