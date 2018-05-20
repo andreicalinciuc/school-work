@@ -17,9 +17,11 @@ int main()
     close(q[1]);
     while( read(0,&w,1) != 0)
     printf("%c",w);
+    close(q[0]);
   }
   else
   {
+    close(q[0]);
     text="salutari!";
     write(q[1],text,strlen(text));
     close(q[1]);
