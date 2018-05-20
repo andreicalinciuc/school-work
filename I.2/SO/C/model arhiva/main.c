@@ -1,4 +1,3 @@
-//TODO: REDO
 /*******************************************************************************************************
 Sa se scrie un program C care va primi ca argument la linia de comanda o valoare numerica N, 
 va citi N cuvinte de la tastatura si va calcula numarul de cuvinte din secventa citita  
@@ -19,67 +18,73 @@ codului de retur (apel exit() sau instructiune return);
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/stat.h>
-#include <string.h>
 
-int main(int argc, char *argv[]) {
-    int n=atoi(argv[1]),status1;
-    int p1[2];
-    pipe(p1);
-    FILE* fout=fdopen(p1[1],"w");
-    FILE* fin=fdopen(p1[0],"r");
-    if(fork()==0) {
-        int p2[2],status;
-        pipe(p2);
-        FILE* fout1=fdopen(p2[1],"w");
-        FILE* fin1=fdopen(p2[0],"r");
-        fclose(fout);
-        if(fork()==0) {
-            int s=0;
-            fclose(fin);
-            fclose(fout1);
-            char c1[256];
-            while(fscanf(fin1,"%s",c1)!=EOF) {
-                s++;
+int p1[2], p2[2];
+
+int main (int argc, int** argv)
+{
+    pipe (p1);
+    FILE* fin1 = fdopen (p1[0], "r");
+    FILE* fout1 = fdopen (p1[1], "w");
+    if (fork() == 0)
+    {
+        pipe (p2);
+        FILE* fin2 = fdopen (p2[0], "r");
+        FILE* fout2 = fdopen (p2[1], "w");
+        if (fork() == 0)
+        {
+            //al doilea fiu
+            int count = 0;
+            char buffer[256];
+            fclose (fin1); fclose (fout1);
+            fclose (fout2);
+            while (fscanf (fin2, "%s", &buffer) != EOF)
+            {
+                count++;
             }
-            fclose(fin1);
-            exit(s);
+            fclose (fin2);
+            exit (count);
         }
-        else {
-            char c2[256];
-            fclose(fout);
-            fclose(fin1);
-            while(fscanf(fin,"%s",c2)!=EOF) {
-                if(c2[strlen(c2)-1]=='z') {
-                    fprintf(fout1,"%s ",c2);
-                    fflush(fout1);
+        else
+        {
+            //primul fiu
+            int codterm2;
+            char buffer[256];
+            fclose (fout1);
+            fclose (fin2);
+            while (fscanf (fin1, "%s", &buffer) != EOF)
+            {
+                if (buffer[strlen(buffer)-1] == 'z')
+                {
+                    fprintf (fout2, "%s ", buffer);
+                    fflush (fout2);
                 }
             }
-            fclose(fin);
-            fclose(fout1);
-            wait(&status);
-            exit(WEXITSTATUS(status));
+            fclose (fin1);
+            fclose (fout2);
+            wait (&codterm2);
+            exit (WEXITSTATUS (codterm2));
         }
     }
-    else {
-        char c3[256];
-        fclose(fin);
-        for(int i=1;i<=n;i++) {
-            scanf("%s",c3);
-            if(c3[0]=='a') {
-                fprintf(fout,"%s ",c3);
-                fflush(fout);
+    else
+    {
+        //tatal
+        int i, n, codterm1;
+        char buffer[256];
+        fclose (fin1);
+        n = atoi (argv[1]);
+        for (i = 1; i <= n; ++i)
+        {
+            scanf ("%s", &buffer);
+            if (buffer[0] == 'a')
+            {
+                fprintf (fout1, "%s ", buffer);
+                fflush (fout1);
             }
         }
-        fclose(fout);
-        wait(&status1);
-        printf("%d",WEXITSTATUS(status1));
-        
+        fclose (fout1);
+        wait (&codterm1);
+        printf ("%d", WEXITSTATUS (codterm1));
+        return 0;
     }
-    return 0;
 }
