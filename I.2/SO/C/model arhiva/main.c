@@ -85,6 +85,6 @@ int main (int argc, int** argv)
         fclose (fout1);
         wait (&codterm1);
         printf ("%d", WEXITSTATUS (codterm1));
-        return 0;
     }
+    return 0;
 }
