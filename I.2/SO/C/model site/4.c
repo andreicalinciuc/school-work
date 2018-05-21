@@ -1,3 +1,5 @@
+//Scrieti un program C care va crea 2 procese fii si va citi de la tastatura o secventa de numere terminata cu CTRL+D. Numerele pozitive vor fi trimise primului fiu, iar numerele negative vor fi trimise celui de-al doilea fiu. Fiecare fiu va calcula suma numerelor primite si va afisa in final identitatea lui si secventa de numere primita, iar suma secventei o va trimite parintelui. Procesul initial va afisa la final cele doua sume primite de la fii si suma celor doua sume.
+
 #include <stdio.h>
 
 int p1[2], p2[2], pf[2];
