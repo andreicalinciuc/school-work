@@ -1,3 +1,29 @@
+*******************************************************************************************************
+Enunt a treia problema:
+
+Sa se scrie un program C care va primi ca argument la linia de comanda o valoarea numerica N,
+va citi N numere de la tastatura si va calcula numarul de numere divizibile cu 4,
+implementand urmatorii pasi:
+1. procesul initial (P0) va crea un proces fiu P1 si ii va transmite toate numerele pare
+din secventa de numere citita de la tastatura; transmiterea datelor se va realiza  prin
+intermediul unui canal de comunicatie anonima;
+2. procesul fiu P1 va crea la randul sau un nou proces fiu P2, va imparti fiecare numar
+primit de la P0 la 2 si ii va transmite procesului P2 doar valorile calculate ce sunt pare;
+transmiterea datelor de la P1 la P2 va fi realizata prin intermediul unui canal de comunicatie
+anonima;
+3. procesul P2 va calcula numarul de numere pare din cele primite de la procesul P1 si
+va transmite valoarea calculata procesului P1, prin intermediul codului de retur (apel exit()
+sau instructiune return);
+4. procesul P1 va transmite procesului P0 valoarea primita de la procesul P2 prin
+intermediul codului de retur (apel exit() sau instructiune return);
+5. procesul P0 va afisa la final valoarea primita de la procesul P1.
+
+OBSERVATIE: Utilizarea de fisiere obisnuite in locul canalelor de comunicatie anonime
+va fi penalizata cu trei puncte.
+
+NOTA: pastrati enuntul in acest comentariu si scrieti rezolvarea mai jos.
+*******************************************************************************************************/
+
 #include <stdio.h>
 #include <sys/wait.h>
 
