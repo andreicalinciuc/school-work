@@ -10,9 +10,8 @@ void master_work()
         if (nr < 0) write (p1[1], &nr, sizeof (int));
         if (nr > 0) write (p2[1], &nr, sizeof (int));
     }
-    close (p1[1]); close (p2[1]);
-    read (pf[0], &suma_partiala1, sizeof (int));
-    read (pf[0], &suma_partiala2, sizeof (int));
+    close (p1[1]); wait (NULL); read (pf[0], &suma_partiala1, sizeof (int));
+    close (p2[1]); wait (NULL); read (pf[0], &suma_partiala2, sizeof (int));
     close (pf[0]);
     printf ("Sunt procesul tata cu PID %d si am primit sumele partiale %d si %d, iar suma lor este %d\n", getpid(), suma_partiala1, suma_partiala2, suma_partiala1 + suma_partiala2);
 }
